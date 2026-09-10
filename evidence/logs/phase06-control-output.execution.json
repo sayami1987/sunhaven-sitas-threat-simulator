@@ -1,0 +1,13 @@
+{
+  "command": [
+    "python",
+    "scripts/inspect_controls.py"
+  ],
+  "workingDirectory": ".",
+  "pythonVersion": "3.12.14",
+  "startedUtc": "2026-09-10T14:57:52.003385+00:00",
+  "finishedUtc": "2026-09-10T14:57:52.216212+00:00",
+  "exitCode": 0,
+  "stdout": "Selected controls: []\n{\n  \"baselinePaths\": 2,\n  \"blockedPaths\": 0,\n  \"remainingPaths\": 2,\n  \"reducedPaths\": 0,\n  \"unchangedPaths\": 2,\n  \"baselineExposure\": 40,\n  \"residualExposure\": 40,\n  \"exposureReductionPercent\": 0.0,\n  \"baselineSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 0,\n    \"High\": 0,\n    \"Critical\": 2\n  },\n  \"remainingSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 0,\n    \"High\": 0,\n    \"Critical\": 2\n  }\n}\nSITAS-AP-45aae794966a46d6 unchanged: The path remains with unchanged ordinal risk. No selected rule matches its transitions.\nSITAS-AP-83382ac5fcc55aaf unchanged: The path remains with unchanged ordinal risk. No selected rule matches its transitions.\nSelected controls: ['mfa']\n{\n  \"baselinePaths\": 2,\n  \"blockedPaths\": 1,\n  \"remainingPaths\": 1,\n  \"reducedPaths\": 1,\n  \"unchangedPaths\": 0,\n  \"baselineExposure\": 40,\n  \"residualExposure\": 10,\n  \"exposureReductionPercent\": 75.0,\n  \"baselineSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 0,\n    \"High\": 0,\n    \"Critical\": 2\n  },\n  \"remainingSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 0,\n    \"High\": 1,\n    \"Critical\": 0\n  }\n}\nSITAS-AP-45aae794966a46d6 blocked: The simulated path is blocked at edge_worker_password_login. mfa/mfa_block_password_only at edge_worker_password_login: Require an additional authentication factor for a password-only transition.\nSITAS-AP-83382ac5fcc55aaf reduced: The path remains; ordinal risk decreases from 20 to 10. mfa/mfa_cap_social_approval at edge_social_mfa_approval: Additional authentication reduces this assumed human-mediated route without claiming complete prevention.\n",
+  "stderr": ""
+}

@@ -35,3 +35,7 @@ path risk inapplicable (reported as null), rather than turning a blocked path
 into a surviving Low-severity path. Summed scores, when reported, are only an
 illustrative exposure index. Shared edges and overlapping scenarios can
 double-count exposure and do not represent independent events or expected loss.
+
+The [reference guidance review](reference-alignment.md) explains how the report
+structure relates to NIST SP 800-30 and distinguishes SITAS's chosen arithmetic
+from the broader risk-assessment guidance.

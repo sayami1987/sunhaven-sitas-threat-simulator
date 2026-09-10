@@ -1,0 +1,12 @@
+Started UTC: 2026-09-10T14:57:01.395503+00:00
+Command: ["python", "-m", "pytest", "tests/test_controls.py", "tests/test_comparison.py", "-q", "--junitxml=evidence/08-testing/phase06-control-comparison.junit.xml"]
+Exit code: 4
+
+STDOUT
+
+- generated xml file: C:\Users\Loo\OneDrive - CQUniversity (1)\Documents\ChatGPT\Capstone project cyberesecurity\sunhaven-sitas-threat-simulator\evidence\08-testing\phase06-control-comparison.junit.xml -
+no tests ran in 0.11s
+
+STDERR
+ERROR: file or directory not found: tests/test_comparison.py
+

@@ -71,3 +71,17 @@ Notes: Scoring validates the ordered path and target impact. The ordinal model i
 Evidence: `evidence/logs/phase05-risk-tests.txt`, `evidence/logs/phase05-risk-output.txt`.
 
 Exact file/command details: `phases/phase-05.json`. Commit recorded after creation.
+
+Phase 05 commit: `458a67d7ea7835fad100233249fd4d3c5c44529b`. Publication is verified separately in push logs.
+
+## Phase 06 Control simulation and exposure comparison
+
+UTC: 2026-09-10T14:59:47.223575+00:00
+
+Status: Completed. Implemented all nine controls and before/after comparison with exact edge/control reasons and null residuals for blocked routes. Final combined control/comparison suite passed33 tests. MFA example blocked one path and reduced the remaining path from20 to10; illustrative exposure40 to10.
+
+Notes: An initial root test command ran before test_comparison.py existed: pytest exited4 and no tests ran; the failed collection log is retained. The final completed suite passed. Reviewed added example PDFs and NIST/SANS/ISM guidance; recorded conceptual applicability without compliance claims.
+
+Evidence: `evidence/logs/phase06-control-comparison-tests.txt`, `evidence/logs/phase06-final-tests.txt`, `evidence/logs/phase06-control-output.txt`.
+
+Exact file/command details: `phases/phase-06.json`. Commit recorded after creation.

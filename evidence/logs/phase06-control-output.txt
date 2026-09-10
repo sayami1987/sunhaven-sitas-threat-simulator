@@ -1,0 +1,57 @@
+Started UTC: 2026-09-10T14:57:52.003385+00:00
+Command: ["python", "scripts/inspect_controls.py"]
+Exit code: 0
+
+STDOUT
+Selected controls: []
+{
+  "baselinePaths": 2,
+  "blockedPaths": 0,
+  "remainingPaths": 2,
+  "reducedPaths": 0,
+  "unchangedPaths": 2,
+  "baselineExposure": 40,
+  "residualExposure": 40,
+  "exposureReductionPercent": 0.0,
+  "baselineSeverity": {
+    "Low": 0,
+    "Medium": 0,
+    "High": 0,
+    "Critical": 2
+  },
+  "remainingSeverity": {
+    "Low": 0,
+    "Medium": 0,
+    "High": 0,
+    "Critical": 2
+  }
+}
+SITAS-AP-45aae794966a46d6 unchanged: The path remains with unchanged ordinal risk. No selected rule matches its transitions.
+SITAS-AP-83382ac5fcc55aaf unchanged: The path remains with unchanged ordinal risk. No selected rule matches its transitions.
+Selected controls: ['mfa']
+{
+  "baselinePaths": 2,
+  "blockedPaths": 1,
+  "remainingPaths": 1,
+  "reducedPaths": 1,
+  "unchangedPaths": 0,
+  "baselineExposure": 40,
+  "residualExposure": 10,
+  "exposureReductionPercent": 75.0,
+  "baselineSeverity": {
+    "Low": 0,
+    "Medium": 0,
+    "High": 0,
+    "Critical": 2
+  },
+  "remainingSeverity": {
+    "Low": 0,
+    "Medium": 0,
+    "High": 1,
+    "Critical": 0
+  }
+}
+SITAS-AP-45aae794966a46d6 blocked: The simulated path is blocked at edge_worker_password_login. mfa/mfa_block_password_only at edge_worker_password_login: Require an additional authentication factor for a password-only transition.
+SITAS-AP-83382ac5fcc55aaf reduced: The path remains; ordinal risk decreases from 20 to 10. mfa/mfa_cap_social_approval at edge_social_mfa_approval: Additional authentication reduces this assumed human-mediated route without claiming complete prevention.
+
+STDERR
