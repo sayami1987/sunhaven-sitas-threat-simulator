@@ -1,0 +1,11 @@
+Started UTC: 2026-09-10T14:42:16.636982+00:00
+Command: ["python", "scripts/validate_inputs.py"]
+Exit code: 0
+
+STDOUT
+VALID: sunhaven_synthetic_environment (Sunhaven SITAS fictional synthetic environment)
+Synthetic model: 42 nodes, 50 directed edges
+Controls: 9; severity bands: 4; likelihood: minimum
+Scenario directory not selected for this validation run.
+
+STDERR

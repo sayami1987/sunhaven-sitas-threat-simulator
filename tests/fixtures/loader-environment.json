@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "LoaderFixture",
+  "name": "Synthetic loader test environment",
+  "synthetic": true,
+  "nodes": [
+    {"id": "Attacker", "name": "Fictional attacker", "type": "attacker", "attributes": {}},
+    {"id": "Account", "name": "Fictional account", "type": "identity", "attributes": {"state": "active"}},
+    {"id": "Asset", "name": "Fictional data", "type": "asset", "attributes": {"impact": 5}}
+  ],
+  "edges": [
+    {"id": "EdgePassword", "source": "Attacker", "target": "Account", "relationship": "authenticates_as", "likelihood": 4, "tags": ["password_only"], "explanation": "A synthetic password-only transition."},
+    {"id": "EdgeBypass", "source": "Attacker", "target": "Account", "relationship": "authenticates_as", "likelihood": 3, "tags": ["mfa_bypass"], "explanation": "A parallel synthetic bypass transition."},
+    {"id": "EdgeAccess", "source": "Account", "target": "Asset", "relationship": "accesses", "likelihood": 5, "tags": ["overprivileged"], "explanation": "An explicit synthetic access transition."}
+  ]
+}

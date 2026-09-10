@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "controls": [
+    {
+      "id": "mfa",
+      "name": "Multi-factor authentication",
+      "description": "Synthetic MFA blocks password-only transitions and caps the explicitly modelled MFA social-engineering route; existing sessions are unaffected.",
+      "rules": [
+        {
+          "id": "mfa_block_password_only",
+          "tag": "password_only",
+          "action": "block",
+          "reason": "Require an additional authentication factor for a password-only transition."
+        },
+        {
+          "id": "mfa_cap_social_approval",
+          "tag": "mfa_social_engineering",
+          "action": "cap",
+          "reason": "Additional authentication reduces this assumed human-mediated route without claiming complete prevention.",
+          "cap": 2
+        }
+      ]
+    },
+    {
+      "id": "rbac",
+      "name": "Role-based access control",
+      "description": "Remove modelled privileges that exceed the identity job need; required business permissions remain.",
+      "rules": [
+        {
+          "id": "rbac_remove_excessive_role",
+          "tag": "excessive_privilege",
+          "action": "block",
+          "reason": "Remove excessive or incorrectly assigned privileges from the synthetic identity."
+        }
+      ]
+    },
+    {
+      "id": "account_disablement",
+      "name": "Account disablement",
+      "description": "Disable stale identities while leaving valid active identities unchanged.",
+      "rules": [
+        {
+          "id": "disable_stale_identity",
+          "tag": "stale_identity",
+          "action": "block",
+          "reason": "Disable a former worker identity that should no longer be active."
+        }
+      ]
+    },
+    {
+      "id": "session_timeout",
+      "name": "Idle session timeout",
+      "description": "Remove stale idle-session routes; freshly active sessions remain until timeout conditions apply.",
+      "rules": [
+        {
+          "id": "timeout_idle_session",
+          "tag": "stale_session",
+          "action": "block",
+          "reason": "Expire a stale idle session; the rule does not match active-session tags."
+        }
+      ]
+    },
+    {
+      "id": "session_revocation",
+      "name": "Session revocation",
+      "description": "Invalidate the active session-token routes explicitly marked in this synthetic model.",
+      "rules": [
+        {
+          "id": "revoke_session_token",
+          "tag": "session_token",
+          "action": "block",
+          "reason": "Invalidate the referenced authenticated session so token reuse no longer provides a route."
+        }
+      ]
+    },
+    {
+      "id": "individual_accounts",
+      "name": "Individual staff accounts",
+      "description": "Remove routes that rely on a shared staff identity.",
+      "rules": [
+        {
+          "id": "remove_shared_account",
+          "tag": "shared_account",
+          "action": "block",
+          "reason": "Replace shared-account access with individual identities, removing this modelled shared-account transition."
+        }
+      ]
+    },
+    {
+      "id": "privileged_reauthentication",
+      "name": "Privileged reauthentication",
+      "description": "Require stronger authentication before privileged operations, capping their modelled ordinal likelihood rather than claiming perfect prevention.",
+      "rules": [
+        {
+          "id": "reauthenticate_privileged_operation",
+          "tag": "privileged_operation",
+          "action": "cap",
+          "reason": "A fresh authentication requirement reduces the modelled likelihood of the privileged operation.",
+          "cap": 2
+        }
+      ]
+    },
+    {
+      "id": "admin_restriction",
+      "name": "Administrator restriction",
+      "description": "Remove unrestricted administrative routes; explicitly required, narrowly scoped roles may remain.",
+      "rules": [
+        {
+          "id": "restrict_unrestricted_admin",
+          "tag": "unrestricted_admin",
+          "action": "block",
+          "reason": "Remove unrestricted administrator authority from this synthetic transition."
+        }
+      ]
+    },
+    {
+      "id": "device_session_separation",
+      "name": "Device-session separation",
+      "description": "Prevent session reuse on a different device; reuse on the original authenticated device remains a separate route.",
+      "rules": [
+        {
+          "id": "separate_cross_device_session",
+          "tag": "cross_device_session",
+          "action": "block",
+          "reason": "Reject reuse outside the original device context without claiming to prevent same-device misuse."
+        }
+      ]
+    }
+  ]
+}

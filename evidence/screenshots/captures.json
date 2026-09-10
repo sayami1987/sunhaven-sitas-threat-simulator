@@ -1,0 +1,32 @@
+[
+  {
+    "number": 21,
+    "filename": "evidence/screenshots/github/21-github-repository-home.png",
+    "captured_at_utc": "2026-09-10T14:36:16.605Z",
+    "phase": "01",
+    "task": "Verify the public SITAS repository after the Phase 01 push",
+    "action": "Opened the dedicated Edge window and refreshed the repository home",
+    "expected": "Public repository with Phase 01 files and commit",
+    "actual": "Public repository, main branch, Phase 01 commit b219b34 and project folders visible",
+    "requirement": "Repository and evidence traceability",
+    "test": "Manual visual verification",
+    "commit": "b219b3447817f37503cf225a9c2a127c105dcf07",
+    "capture_method": "Native sky.get_window_state JPEG re-encoded as PNG without resizing, cropping or modifying content",
+    "privacy_review": "Single task tab; no unrelated tabs, bookmark contents, credentials, email or private account details visible"
+  },
+  {
+    "number": 1,
+    "filename": "evidence/screenshots/planning/01-requirements-definition.png",
+    "captured_at_utc": "2026-09-10T14:36:51.039Z",
+    "phase": "01",
+    "task": "Document functional requirements and acceptance criteria",
+    "action": "Opened the published requirements file at the Phase 01 commit",
+    "expected": "SITAS requirements heading, requirement IDs and acceptance criteria visible",
+    "actual": "Requirement definition, FR-01 and FR-02 and their acceptance criteria visible in the GitHub document preview",
+    "requirement": "FR-01, FR-02; requirements traceability",
+    "test": "Manual visual verification; definition evidence, not executed acceptance testing",
+    "commit": "b219b3447817f37503cf225a9c2a127c105dcf07",
+    "capture_method": "Native sky.get_window_state JPEG re-encoded as PNG without resizing, cropping or modifying content",
+    "privacy_review": "Single task tab; no unrelated tabs, credentials, email or private account details visible"
+  }
+]

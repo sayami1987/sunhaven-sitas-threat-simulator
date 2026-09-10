@@ -1,0 +1,1053 @@
+{
+  "schema_version": 1,
+  "id": "sunhaven_synthetic_environment",
+  "name": "Sunhaven SITAS fictional synthetic environment",
+  "synthetic": true,
+  "nodes": [
+    {
+      "id": "attacker_external",
+      "name": "Fictional external threat actor",
+      "type": "attacker",
+      "attributes": {
+        "fictional": true
+      }
+    },
+    {
+      "id": "actor_local",
+      "name": "Fictional local workstation user",
+      "type": "actor",
+      "attributes": {
+        "fictional": true
+      }
+    },
+    {
+      "id": "actor_internal",
+      "name": "Fictional internal user",
+      "type": "actor",
+      "attributes": {
+        "fictional": true
+      }
+    },
+    {
+      "id": "actor_agency",
+      "name": "Fictional agency operator",
+      "type": "actor",
+      "attributes": {
+        "fictional": true
+      }
+    },
+    {
+      "id": "actor_support",
+      "name": "Fictional support operator",
+      "type": "actor",
+      "attributes": {
+        "fictional": true
+      }
+    },
+    {
+      "id": "credential_worker",
+      "name": "Synthetic worker-password reference",
+      "type": "credential",
+      "attributes": {
+        "contains_secret": false,
+        "fictional": true
+      }
+    },
+    {
+      "id": "credential_admin",
+      "name": "Synthetic administrator-password reference",
+      "type": "credential",
+      "attributes": {
+        "contains_secret": false,
+        "fictional": true
+      }
+    },
+    {
+      "id": "credential_social",
+      "name": "Synthetic password reference for MFA scenario",
+      "type": "credential",
+      "attributes": {
+        "contains_secret": false,
+        "fictional": true
+      }
+    },
+    {
+      "id": "credential_service",
+      "name": "Synthetic service-password reference",
+      "type": "credential",
+      "attributes": {
+        "contains_secret": false,
+        "fictional": true
+      }
+    },
+    {
+      "id": "workstation_shared",
+      "name": "Fictional shared care workstation",
+      "type": "workstation",
+      "attributes": {
+        "shared": true,
+        "fictional": true
+      }
+    },
+    {
+      "id": "session_stale",
+      "name": "Synthetic idle shared-workstation session",
+      "type": "session",
+      "attributes": {
+        "state": "stale",
+        "fictional": true
+      }
+    },
+    {
+      "id": "session_fresh",
+      "name": "Synthetic active shared-workstation session",
+      "type": "session",
+      "attributes": {
+        "state": "fresh",
+        "fictional": true
+      }
+    },
+    {
+      "id": "session_admin",
+      "name": "Synthetic stolen administrator-session reference",
+      "type": "session",
+      "attributes": {
+        "state": "fresh",
+        "contains_token": false,
+        "fictional": true
+      }
+    },
+    {
+      "id": "session_copied",
+      "name": "Synthetic copied staff-session reference",
+      "type": "session",
+      "attributes": {
+        "state": "fresh",
+        "contains_token": false,
+        "fictional": true
+      }
+    },
+    {
+      "id": "session_cross_device",
+      "name": "Synthetic session on a different device",
+      "type": "session",
+      "attributes": {
+        "state": "fresh",
+        "device_context": "different",
+        "fictional": true
+      }
+    },
+    {
+      "id": "session_same_device",
+      "name": "Synthetic session on its original device",
+      "type": "session",
+      "attributes": {
+        "state": "fresh",
+        "device_context": "same",
+        "fictional": true
+      }
+    },
+    {
+      "id": "identity_worker",
+      "name": "Fictional care worker identity",
+      "type": "identity",
+      "attributes": {
+        "status": "active",
+        "fictional": true
+      }
+    },
+    {
+      "id": "identity_shared",
+      "name": "Fictional shared staff identity",
+      "type": "identity",
+      "attributes": {
+        "status": "active",
+        "shared": true,
+        "fictional": true
+      }
+    },
+    {
+      "id": "identity_former",
+      "name": "Fictional former worker identity",
+      "type": "identity",
+      "attributes": {
+        "status": "should_be_disabled",
+        "fictional": true
+      }
+    },
+    {
+      "id": "identity_admin",
+      "name": "Fictional administrator identity",
+      "type": "identity",
+      "attributes": {
+        "status": "active",
+        "fictional": true
+      }
+    },
+    {
+      "id": "identity_agency",
+      "name": "Fictional delegated agency identity",
+      "type": "identity",
+      "attributes": {
+        "status": "active",
+        "fictional": true
+      }
+    },
+    {
+      "id": "identity_service",
+      "name": "Fictional export-service identity",
+      "type": "identity",
+      "attributes": {
+        "status": "active",
+        "fictional": true
+      }
+    },
+    {
+      "id": "identity_support",
+      "name": "Fictional authorised support identity",
+      "type": "identity",
+      "attributes": {
+        "status": "active",
+        "fictional": true
+      }
+    },
+    {
+      "id": "factor_mfa",
+      "name": "Synthetic MFA approval event",
+      "type": "authentication_factor",
+      "attributes": {
+        "contains_secret": false,
+        "fictional": true
+      }
+    },
+    {
+      "id": "privilege_excessive",
+      "name": "Fictional excessive staff privilege",
+      "type": "privilege",
+      "attributes": {
+        "authorisation": "exceeds_job_need",
+        "fictional": true
+      }
+    },
+    {
+      "id": "privilege_unrestricted_admin",
+      "name": "Fictional unrestricted administrator privilege",
+      "type": "privilege",
+      "attributes": {
+        "authorisation": "unrestricted",
+        "fictional": true
+      }
+    },
+    {
+      "id": "privilege_misassigned",
+      "name": "Fictional incorrectly assigned clinical role",
+      "type": "privilege",
+      "attributes": {
+        "authorisation": "assignment_error",
+        "fictional": true
+      }
+    },
+    {
+      "id": "privilege_service_excessive",
+      "name": "Fictional excessive service-export privilege",
+      "type": "privilege",
+      "attributes": {
+        "authorisation": "exceeds_job_need",
+        "fictional": true
+      }
+    },
+    {
+      "id": "privilege_support_export",
+      "name": "Fictional approved support-export privilege",
+      "type": "privilege",
+      "attributes": {
+        "authorisation": "legitimate_business_need",
+        "fictional": true
+      }
+    },
+    {
+      "id": "app_care",
+      "name": "Fictional care portal",
+      "type": "application",
+      "attributes": {
+        "fictional": true
+      }
+    },
+    {
+      "id": "app_medication",
+      "name": "Fictional medication application",
+      "type": "application",
+      "attributes": {
+        "fictional": true
+      }
+    },
+    {
+      "id": "app_admin",
+      "name": "Fictional administration console",
+      "type": "application",
+      "attributes": {
+        "fictional": true
+      }
+    },
+    {
+      "id": "app_roster",
+      "name": "Fictional staff roster portal",
+      "type": "application",
+      "attributes": {
+        "fictional": true
+      }
+    },
+    {
+      "id": "app_agency",
+      "name": "Fictional agency scheduling console",
+      "type": "application",
+      "attributes": {
+        "fictional": true
+      }
+    },
+    {
+      "id": "app_export",
+      "name": "Fictional records export application",
+      "type": "application",
+      "attributes": {
+        "fictional": true
+      }
+    },
+    {
+      "id": "asset_care_records",
+      "name": "Synthetic care-record dataset",
+      "type": "asset",
+      "attributes": {
+        "impact": 5,
+        "classification": "synthetic_sensitive",
+        "fictional": true
+      }
+    },
+    {
+      "id": "asset_medication_records",
+      "name": "Synthetic medication-record dataset",
+      "type": "asset",
+      "attributes": {
+        "impact": 4,
+        "classification": "synthetic_sensitive",
+        "fictional": true
+      }
+    },
+    {
+      "id": "asset_payroll_records",
+      "name": "Synthetic payroll-record dataset",
+      "type": "asset",
+      "attributes": {
+        "impact": 5,
+        "classification": "synthetic_sensitive",
+        "fictional": true
+      }
+    },
+    {
+      "id": "asset_identity_store",
+      "name": "Synthetic identity-configuration dataset",
+      "type": "asset",
+      "attributes": {
+        "impact": 5,
+        "classification": "synthetic_critical_configuration",
+        "fictional": true
+      }
+    },
+    {
+      "id": "asset_staff_roster",
+      "name": "Synthetic staff roster dataset",
+      "type": "asset",
+      "attributes": {
+        "impact": 4,
+        "classification": "synthetic_internal",
+        "fictional": true
+      }
+    },
+    {
+      "id": "asset_agency_roster",
+      "name": "Synthetic permitted agency roster dataset",
+      "type": "asset",
+      "attributes": {
+        "impact": 3,
+        "classification": "synthetic_limited_business_data",
+        "fictional": true
+      }
+    },
+    {
+      "id": "asset_care_archive",
+      "name": "Synthetic exported care-record archive",
+      "type": "asset",
+      "attributes": {
+        "impact": 5,
+        "classification": "synthetic_sensitive",
+        "fictional": true
+      }
+    },
+    {
+      "id": "credential_agency",
+      "name": "Synthetic agency-password reference",
+      "type": "credential",
+      "attributes": {
+        "contains_secret": false,
+        "fictional": true
+      }
+    },
+    {
+      "id": "identity_agency_password_context",
+      "name": "Fictional agency identity in password-authenticated context",
+      "type": "identity",
+      "attributes": {
+        "status": "active",
+        "authentication_context": "password_only",
+        "fictional": true
+      }
+    },
+    {
+      "id": "workstation_agency_shared",
+      "name": "Fictional shared agency workstation",
+      "type": "workstation",
+      "attributes": {
+        "shared": true,
+        "fictional": true
+      }
+    },
+    {
+      "id": "workstation_service",
+      "name": "Fictional service-support workstation",
+      "type": "workstation",
+      "attributes": {
+        "fictional": true
+      }
+    },
+    {
+      "id": "app_internal_support",
+      "name": "Fictional internal support application",
+      "type": "application",
+      "attributes": {
+        "fictional": true
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_worker_password_acquired",
+      "source": "attacker_external",
+      "target": "credential_worker",
+      "relationship": "holds_credential_reference",
+      "likelihood": 4,
+      "tags": [
+        "credential_exposure"
+      ],
+      "explanation": "Assume the fictional attacker already holds a worker-password reference; no password or acquisition procedure is represented."
+    },
+    {
+      "id": "edge_worker_password_login",
+      "source": "credential_worker",
+      "target": "identity_worker",
+      "relationship": "authenticates_as",
+      "likelihood": 4,
+      "tags": [
+        "password_only"
+      ],
+      "explanation": "The synthetic login accepts the password alone unless MFA blocks this transition."
+    },
+    {
+      "id": "edge_worker_care_portal",
+      "source": "identity_worker",
+      "target": "app_care",
+      "relationship": "has_application_access",
+      "likelihood": 4,
+      "tags": [
+        "authorised_access"
+      ],
+      "explanation": "An authenticated care worker has ordinary access to the fictional care portal."
+    },
+    {
+      "id": "edge_care_records_access",
+      "source": "app_care",
+      "target": "asset_care_records",
+      "relationship": "can_read_dataset",
+      "likelihood": 4,
+      "tags": [
+        "data_access"
+      ],
+      "explanation": "The fictional care portal exposes the synthetic care-record dataset to its permitted identity."
+    },
+    {
+      "id": "edge_local_shared_workstation",
+      "source": "actor_local",
+      "target": "workstation_shared",
+      "relationship": "can_use_device",
+      "likelihood": 4,
+      "tags": [
+        "shared_device"
+      ],
+      "explanation": "Assume the fictional local actor can physically use the shared workstation; device acquisition is outside this model."
+    },
+    {
+      "id": "edge_workstation_stale_session",
+      "source": "workstation_shared",
+      "target": "session_stale",
+      "relationship": "retains_idle_session",
+      "likelihood": 4,
+      "tags": [
+        "stale_session"
+      ],
+      "explanation": "A previously authenticated idle session remains available; the timeout rule removes this stale-session transition."
+    },
+    {
+      "id": "edge_stale_shared_identity",
+      "source": "session_stale",
+      "target": "identity_shared",
+      "relationship": "acts_as_shared_identity",
+      "likelihood": 4,
+      "tags": [
+        "shared_account"
+      ],
+      "explanation": "The stale workstation session uses a shared account; individual-account enforcement removes this shared-account route."
+    },
+    {
+      "id": "edge_workstation_fresh_session",
+      "source": "workstation_shared",
+      "target": "session_fresh",
+      "relationship": "retains_active_session",
+      "likelihood": 3,
+      "tags": [
+        "active_session"
+      ],
+      "explanation": "Alternative precondition: the workstation session is freshly active and has not reached the idle timeout; timeout alone leaves it available."
+    },
+    {
+      "id": "edge_fresh_shared_identity",
+      "source": "session_fresh",
+      "target": "identity_shared",
+      "relationship": "acts_as_shared_identity",
+      "likelihood": 4,
+      "tags": [
+        "shared_account"
+      ],
+      "explanation": "The active workstation session still uses a shared account; removing shared accounts blocks this separate route."
+    },
+    {
+      "id": "edge_shared_medication_access",
+      "source": "identity_shared",
+      "target": "app_medication",
+      "relationship": "has_application_access",
+      "likelihood": 4,
+      "tags": [
+        "authorised_access"
+      ],
+      "explanation": "The fictional shared identity has application access under the scenario assumptions."
+    },
+    {
+      "id": "edge_medication_records_access",
+      "source": "app_medication",
+      "target": "asset_medication_records",
+      "relationship": "can_read_dataset",
+      "likelihood": 4,
+      "tags": [
+        "data_access"
+      ],
+      "explanation": "The fictional medication application exposes only the synthetic target dataset in this model."
+    },
+    {
+      "id": "edge_former_identity_reuse",
+      "source": "attacker_external",
+      "target": "identity_former",
+      "relationship": "reuses_retained_identity",
+      "likelihood": 4,
+      "tags": [
+        "stale_identity"
+      ],
+      "explanation": "Assume the former worker identity remains enabled and accessible to the fictional actor; account disablement removes this stale-identity route."
+    },
+    {
+      "id": "edge_former_medication_access",
+      "source": "identity_former",
+      "target": "app_medication",
+      "relationship": "retains_application_access",
+      "likelihood": 4,
+      "tags": [
+        "retained_access"
+      ],
+      "explanation": "The former identity retains its medication-application entitlement until the account is disabled."
+    },
+    {
+      "id": "edge_internal_worker_identity",
+      "source": "actor_internal",
+      "target": "identity_worker",
+      "relationship": "uses_assigned_identity",
+      "likelihood": 4,
+      "tags": [
+        "authorised_access"
+      ],
+      "explanation": "The internal actor already controls their valid worker identity; normal authentication is a scenario precondition."
+    },
+    {
+      "id": "edge_worker_excessive_role",
+      "source": "identity_worker",
+      "target": "privilege_excessive",
+      "relationship": "receives_excessive_privilege",
+      "likelihood": 4,
+      "tags": [
+        "excessive_privilege"
+      ],
+      "explanation": "The worker has a privilege beyond their job need; the RBAC rule removes this excessive entitlement."
+    },
+    {
+      "id": "edge_excessive_admin_console",
+      "source": "privilege_excessive",
+      "target": "app_admin",
+      "relationship": "permits_privileged_operation",
+      "likelihood": 4,
+      "tags": [
+        "privileged_operation"
+      ],
+      "explanation": "The excessive entitlement permits a privileged console operation; reauthentication caps its ordinal likelihood."
+    },
+    {
+      "id": "edge_admin_payroll_access",
+      "source": "app_admin",
+      "target": "asset_payroll_records",
+      "relationship": "can_read_sensitive_dataset",
+      "likelihood": 4,
+      "tags": [
+        "sensitive_access"
+      ],
+      "explanation": "The fictional privileged console can access the synthetic payroll dataset."
+    },
+    {
+      "id": "edge_admin_password_acquired",
+      "source": "attacker_external",
+      "target": "credential_admin",
+      "relationship": "holds_credential_reference",
+      "likelihood": 4,
+      "tags": [
+        "credential_exposure"
+      ],
+      "explanation": "Assume the fictional attacker holds an administrator-password reference; it contains no usable secret."
+    },
+    {
+      "id": "edge_admin_password_login",
+      "source": "credential_admin",
+      "target": "identity_admin",
+      "relationship": "authenticates_as",
+      "likelihood": 4,
+      "tags": [
+        "password_only"
+      ],
+      "explanation": "The password-based administrator login is blocked by MFA in this simplified control model."
+    },
+    {
+      "id": "edge_admin_unrestricted_role",
+      "source": "identity_admin",
+      "target": "privilege_unrestricted_admin",
+      "relationship": "holds_unrestricted_privilege",
+      "likelihood": 4,
+      "tags": [
+        "unrestricted_admin"
+      ],
+      "explanation": "The administrator has an unrestricted privilege; the administrator-restriction rule removes this route."
+    },
+    {
+      "id": "edge_unrestricted_admin_console",
+      "source": "privilege_unrestricted_admin",
+      "target": "app_admin",
+      "relationship": "permits_privileged_operation",
+      "likelihood": 4,
+      "tags": [
+        "privileged_operation"
+      ],
+      "explanation": "The unrestricted privilege enables a console operation unless restricted or interrupted by stronger authentication."
+    },
+    {
+      "id": "edge_stolen_admin_session",
+      "source": "attacker_external",
+      "target": "session_admin",
+      "relationship": "holds_active_session_reference",
+      "likelihood": 3,
+      "tags": [
+        "session_token"
+      ],
+      "explanation": "Alternative precondition: an already authenticated administrator session is available; password MFA alone does not invalidate it."
+    },
+    {
+      "id": "edge_admin_session_console",
+      "source": "session_admin",
+      "target": "app_admin",
+      "relationship": "reuses_authenticated_session",
+      "likelihood": 4,
+      "tags": [
+        "session_token",
+        "active_session"
+      ],
+      "explanation": "The active administrator session already carries console authority; revocation removes it, while an idle timeout has not yet elapsed."
+    },
+    {
+      "id": "edge_console_identity_store",
+      "source": "app_admin",
+      "target": "asset_identity_store",
+      "relationship": "performs_privileged_change",
+      "likelihood": 4,
+      "tags": [
+        "privileged_operation"
+      ],
+      "explanation": "A privileged console operation affects the synthetic identity-configuration dataset; reauthentication caps this transition."
+    },
+    {
+      "id": "edge_social_password_acquired",
+      "source": "attacker_external",
+      "target": "credential_social",
+      "relationship": "holds_credential_reference",
+      "likelihood": 4,
+      "tags": [
+        "credential_exposure"
+      ],
+      "explanation": "Assume a synthetic worker-password reference is already exposed; completing MFA remains an additional prerequisite."
+    },
+    {
+      "id": "edge_social_mfa_approval",
+      "source": "credential_social",
+      "target": "factor_mfa",
+      "relationship": "obtains_assumed_mfa_approval",
+      "likelihood": 4,
+      "tags": [
+        "mfa_social_engineering"
+      ],
+      "explanation": "Assume the fictional user approves an attacker-initiated MFA event; the MFA control reduces but does not eliminate this explicitly modelled human-mediated route."
+    },
+    {
+      "id": "edge_mfa_worker_identity",
+      "source": "factor_mfa",
+      "target": "identity_worker",
+      "relationship": "completes_authentication",
+      "likelihood": 4,
+      "tags": [
+        "completed_mfa"
+      ],
+      "explanation": "An approved synthetic MFA event completes authentication; this route is deliberately distinct from password-only access."
+    },
+    {
+      "id": "edge_worker_roster_access",
+      "source": "identity_worker",
+      "target": "app_roster",
+      "relationship": "has_application_access",
+      "likelihood": 4,
+      "tags": [
+        "authorised_access"
+      ],
+      "explanation": "The authenticated worker normally has access to the fictional roster portal."
+    },
+    {
+      "id": "edge_staff_roster_access",
+      "source": "app_roster",
+      "target": "asset_staff_roster",
+      "relationship": "can_read_dataset",
+      "likelihood": 4,
+      "tags": [
+        "data_access"
+      ],
+      "explanation": "The roster portal exposes the synthetic staff roster dataset to the authorised identity."
+    },
+    {
+      "id": "edge_copied_staff_session",
+      "source": "attacker_external",
+      "target": "session_copied",
+      "relationship": "holds_active_session_reference",
+      "likelihood": 4,
+      "tags": [
+        "session_token"
+      ],
+      "explanation": "Assume an active synthetic staff-session reference is available; no real token or token-capture method is included."
+    },
+    {
+      "id": "edge_cross_device_reuse",
+      "source": "session_copied",
+      "target": "session_cross_device",
+      "relationship": "reuses_session_on_other_device",
+      "likelihood": 4,
+      "tags": [
+        "cross_device_session"
+      ],
+      "explanation": "The copied session is accepted on a different device; device-session separation removes this cross-device route."
+    },
+    {
+      "id": "edge_cross_device_roster",
+      "source": "session_cross_device",
+      "target": "app_roster",
+      "relationship": "uses_authenticated_session",
+      "likelihood": 4,
+      "tags": [
+        "session_token",
+        "active_session"
+      ],
+      "explanation": "The cross-device session is active and authenticated, so fresh-session revocation is needed to invalidate it."
+    },
+    {
+      "id": "edge_same_device_reuse",
+      "source": "session_copied",
+      "target": "session_same_device",
+      "relationship": "reuses_session_on_original_device",
+      "likelihood": 3,
+      "tags": [
+        "same_device_session"
+      ],
+      "explanation": "Alternative precondition: the actor can use the original authenticated device; device binding alone does not remove same-device reuse."
+    },
+    {
+      "id": "edge_same_device_roster",
+      "source": "session_same_device",
+      "target": "app_roster",
+      "relationship": "uses_authenticated_session",
+      "likelihood": 4,
+      "tags": [
+        "session_token",
+        "active_session"
+      ],
+      "explanation": "The same-device session is still active; revocation removes it, whereas password MFA and idle timeout alone do not."
+    },
+    {
+      "id": "edge_agency_operator_compromise",
+      "source": "attacker_external",
+      "target": "actor_agency",
+      "relationship": "controls_assumed_upstream_actor",
+      "likelihood": 3,
+      "tags": [
+        "upstream_compromise"
+      ],
+      "explanation": "Assume the fictional agency operator is already attacker-controlled after its required legitimate authentication; the upstream compromise lies outside these nine controls."
+    },
+    {
+      "id": "edge_agency_delegated_identity",
+      "source": "actor_agency",
+      "target": "identity_agency",
+      "relationship": "uses_delegated_identity",
+      "likelihood": 4,
+      "tags": [
+        "delegated_authority"
+      ],
+      "explanation": "The fictional operator holds an active delegated identity with only its required business permissions."
+    },
+    {
+      "id": "edge_agency_console_access",
+      "source": "identity_agency",
+      "target": "app_agency",
+      "relationship": "has_permitted_application_access",
+      "likelihood": 4,
+      "tags": [
+        "authorised_access"
+      ],
+      "explanation": "The agency identity accesses its permitted scheduling console; no excessive privilege or shared account is assumed."
+    },
+    {
+      "id": "edge_agency_roster_access",
+      "source": "app_agency",
+      "target": "asset_agency_roster",
+      "relationship": "reads_permitted_dataset",
+      "likelihood": 4,
+      "tags": [
+        "permitted_data_access"
+      ],
+      "explanation": "Only the limited synthetic agency roster is reachable on this path; the selected controls do not remove legitimate delegated access."
+    },
+    {
+      "id": "edge_internal_agency_identity",
+      "source": "actor_internal",
+      "target": "identity_agency",
+      "relationship": "uses_assigned_identity",
+      "likelihood": 3,
+      "tags": [
+        "authorised_access"
+      ],
+      "explanation": "Assume the fictional internal actor legitimately uses the agency identity; the scenario isolates an incorrect role assignment."
+    },
+    {
+      "id": "edge_agency_misassigned_role",
+      "source": "identity_agency",
+      "target": "privilege_misassigned",
+      "relationship": "receives_incorrect_role",
+      "likelihood": 4,
+      "tags": [
+        "excessive_privilege",
+        "assignment_error"
+      ],
+      "explanation": "A clinical role is mistakenly assigned to the agency identity; RBAC enforcement removes this excessive privilege."
+    },
+    {
+      "id": "edge_wrong_role_medication",
+      "source": "privilege_misassigned",
+      "target": "app_medication",
+      "relationship": "permits_privileged_operation",
+      "likelihood": 4,
+      "tags": [
+        "privileged_operation"
+      ],
+      "explanation": "The wrongly assigned role permits a clinical application operation outside the agency identity job need."
+    },
+    {
+      "id": "edge_service_password_acquired",
+      "source": "attacker_external",
+      "target": "credential_service",
+      "relationship": "holds_credential_reference",
+      "likelihood": 4,
+      "tags": [
+        "credential_exposure"
+      ],
+      "explanation": "Assume the fictional actor already holds a service-password reference; no live credentials are present."
+    },
+    {
+      "id": "edge_service_password_login",
+      "source": "credential_service",
+      "target": "identity_service",
+      "relationship": "authenticates_as",
+      "likelihood": 4,
+      "tags": [
+        "password_only"
+      ],
+      "explanation": "The service identity accepts password-only authentication in this simplified route; the MFA rule blocks it."
+    },
+    {
+      "id": "edge_service_excessive_role",
+      "source": "app_internal_support",
+      "target": "privilege_service_excessive",
+      "relationship": "exposes_excessive_service_privilege",
+      "likelihood": 4,
+      "tags": [
+        "excessive_privilege"
+      ],
+      "explanation": "After workstation and internal-application access, the service context exposes unnecessary export authority; RBAC enforcement removes this excessive entitlement."
+    },
+    {
+      "id": "edge_service_unrestricted_export",
+      "source": "privilege_service_excessive",
+      "target": "app_export",
+      "relationship": "uses_unrestricted_export_authority",
+      "likelihood": 4,
+      "tags": [
+        "unrestricted_admin"
+      ],
+      "explanation": "The excessive service role provides unrestricted administrative export access; administrator restriction removes this transition."
+    },
+    {
+      "id": "edge_export_care_archive",
+      "source": "app_export",
+      "target": "asset_care_archive",
+      "relationship": "performs_privileged_export",
+      "likelihood": 4,
+      "tags": [
+        "privileged_operation"
+      ],
+      "explanation": "The final export is a privileged operation on synthetic records; privileged reauthentication reduces its ordinal likelihood."
+    },
+    {
+      "id": "edge_support_operator_influence",
+      "source": "attacker_external",
+      "target": "actor_support",
+      "relationship": "controls_assumed_authorised_actor",
+      "likelihood": 3,
+      "tags": [
+        "upstream_compromise"
+      ],
+      "explanation": "Residual-route precondition: a fictional authorised support operator is already attacker-controlled or intentionally misuses access; this is separate from the stolen-service-password route."
+    },
+    {
+      "id": "edge_support_active_identity",
+      "source": "actor_support",
+      "target": "identity_support",
+      "relationship": "uses_legitimate_active_identity",
+      "likelihood": 4,
+      "tags": [
+        "authorised_access"
+      ],
+      "explanation": "The support actor uses their own active identity with completed normal authentication; stale-account and shared-account rules do not apply."
+    },
+    {
+      "id": "edge_support_approved_export_role",
+      "source": "identity_support",
+      "target": "privilege_support_export",
+      "relationship": "holds_required_business_role",
+      "likelihood": 4,
+      "tags": [
+        "approved_role"
+      ],
+      "explanation": "The support identity legitimately needs a narrowly approved export role; correcting excessive roles does not remove this required permission."
+    },
+    {
+      "id": "edge_support_permitted_export",
+      "source": "privilege_support_export",
+      "target": "app_export",
+      "relationship": "uses_permitted_export_workflow",
+      "likelihood": 3,
+      "tags": [
+        "legitimate_export"
+      ],
+      "explanation": "The authorised support route uses a permitted export workflow, bypassing the separate misconfigured-service route; final privileged reauthentication still caps its likelihood."
+    },
+    {
+      "id": "edge_agency_password_acquired",
+      "source": "attacker_external",
+      "target": "credential_agency",
+      "relationship": "holds_credential_reference",
+      "likelihood": 3,
+      "tags": [
+        "credential_exposure"
+      ],
+      "explanation": "Primary-route precondition: the fictional actor holds an agency-password reference; no usable secret or acquisition procedure is included."
+    },
+    {
+      "id": "edge_agency_password_login",
+      "source": "credential_agency",
+      "target": "identity_agency_password_context",
+      "relationship": "authenticates_as",
+      "likelihood": 4,
+      "tags": [
+        "password_only"
+      ],
+      "explanation": "The compromised agency credential creates a password-only authenticated context; MFA blocks this primary route. The separate delegated-operator context preserves the explicitly assumed residual alternative."
+    },
+    {
+      "id": "edge_agency_shared_workstation",
+      "source": "identity_agency_password_context",
+      "target": "workstation_agency_shared",
+      "relationship": "can_use_shared_device",
+      "likelihood": 4,
+      "tags": [
+        "shared_device"
+      ],
+      "explanation": "The password-authenticated agency context permits use of a fictional shared agency workstation. Sharing a device does not by itself imply sharing an account."
+    },
+    {
+      "id": "edge_agency_workstation_console",
+      "source": "workstation_agency_shared",
+      "target": "app_agency",
+      "relationship": "opens_permitted_application",
+      "likelihood": 4,
+      "tags": [
+        "authorised_access"
+      ],
+      "explanation": "The fictional agency workstation opens its permitted scheduling application, reaching only the limited synthetic agency dataset."
+    },
+    {
+      "id": "edge_service_workstation_access",
+      "source": "identity_service",
+      "target": "workstation_service",
+      "relationship": "uses_authenticated_workstation",
+      "likelihood": 4,
+      "tags": [
+        "authorised_access"
+      ],
+      "explanation": "The authenticated fictional service identity can use the service-support workstation; this is a separate stage before application access and privilege escalation."
+    },
+    {
+      "id": "edge_workstation_internal_support",
+      "source": "workstation_service",
+      "target": "app_internal_support",
+      "relationship": "opens_internal_application",
+      "likelihood": 4,
+      "tags": [
+        "authorised_access"
+      ],
+      "explanation": "The workstation reaches the fictional internal support application, which runs in the already authenticated service context."
+    }
+  ]
+}

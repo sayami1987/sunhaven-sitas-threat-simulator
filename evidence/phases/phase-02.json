@@ -1,0 +1,77 @@
+{
+  "phase": 2,
+  "title": "Synthetic environment and strict input validation",
+  "recordedUtc": "2026-09-10T14:44:10.364260+00:00",
+  "status": "Completed",
+  "result": "Created 47 synthetic nodes, 56 edges, nine controls, risk model and strict loader. 121 loader tests passed; final configuration validates.",
+  "notes": "Review found mutable node attributes; recursively froze nested data and verified mutation failures. One initial development test expected a list after the representation became a tuple; corrected the expectation. Initial environment expanded to include explicit agency-device and multistage workstation routes. Two genuine Phase1 screenshots are saved; further native capture halted on URL-verification safety failure, so remaining screenshots require manual capture.",
+  "filesAtRecording": [
+    "M evidence/Phase-Completion-Register.md",
+    " M evidence/Screenshot-Evidence-Register.md",
+    " M evidence/phases/phase-01.json",
+    "?? .gitattributes",
+    "?? config/controls.json",
+    "?? config/environment.json",
+    "?? config/risk-model.json",
+    "?? docs/design/input-contract.md",
+    "?? evidence/08-testing/phase02-loader.junit.xml",
+    "?? evidence/logs/phase01-github-push.execution.json",
+    "?? evidence/logs/phase01-github-push.txt",
+    "?? evidence/logs/phase02-final-model-validation.execution.json",
+    "?? evidence/logs/phase02-final-model-validation.txt",
+    "?? evidence/logs/phase02-loader-tests.execution.json",
+    "?? evidence/logs/phase02-loader-tests.txt",
+    "?? evidence/logs/phase02-model-validation.execution.json",
+    "?? evidence/logs/phase02-model-validation.txt",
+    "?? evidence/screenshots/captures.json",
+    "?? evidence/screenshots/github/21-github-repository-home.png",
+    "?? evidence/screenshots/planning/01-requirements-definition.png",
+    "?? scripts/update_screenshot_register.py",
+    "?? scripts/validate_inputs.py",
+    "?? src/__init__.py",
+    "?? src/model_loader.py",
+    "?? src/models.py",
+    "?? tests/__init__.py",
+    "?? tests/fixtures/loader-environment.json",
+    "?? tests/test_loader.py"
+  ],
+  "evidence": [
+    {
+      "file": "evidence/logs/phase02-loader-tests.txt",
+      "execution": {
+        "command": [
+          "python",
+          "-m",
+          "pytest",
+          "tests/test_loader.py",
+          "-q",
+          "--junitxml=evidence/08-testing/phase02-loader.junit.xml"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T14:42:15.379052+00:00",
+        "finishedUtc": "2026-09-10T14:42:16.489162+00:00",
+        "exitCode": 0,
+        "stdout": "........................................................................ [ 59%]\n.................................................                        [100%]\n- generated xml file: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\evidence\\08-testing\\phase02-loader.junit.xml -\n121 passed in 0.49s\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "evidence/logs/phase02-final-model-validation.txt",
+      "execution": {
+        "command": [
+          "python",
+          "scripts/validate_inputs.py"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T14:43:56.211418+00:00",
+        "finishedUtc": "2026-09-10T14:43:56.395607+00:00",
+        "exitCode": 0,
+        "stdout": "VALID: sunhaven_synthetic_environment (Sunhaven SITAS fictional synthetic environment)\nSynthetic model: 47 nodes, 56 directed edges\nControls: 9; severity bands: 4; likelihood: minimum\nScenario directory not selected for this validation run.\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "commit": null
+}
