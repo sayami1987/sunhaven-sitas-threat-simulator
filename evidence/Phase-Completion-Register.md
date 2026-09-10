@@ -43,3 +43,17 @@ Notes: Parallel edges and cycles are supported and tested using handcrafted grap
 Evidence: `evidence/logs/phase03-graph-tests.txt`, `evidence/logs/phase03-graph-output.txt`.
 
 Exact file/command details: `phases/phase-03.json`. Commit recorded after creation.
+
+Phase 03 commit: `ff1fe11e3e1d1ecc7fe0328fb1ba6251f6078020`. Publication is verified separately in push logs.
+
+## Phase 04 Bounded iterative attack path discovery
+
+UTC: 2026-09-10T14:50:21.929805+00:00
+
+Status: Completed. Implemented iterative DFS, stable path IDs, cycle-safe backtracking, explicit depth bounds and resource-exhaustion errors. 29 tests passed including an independent BFS oracle. Actual synthetic query found two paths; depth3 found zero with14 pruned branches.
+
+Notes: Depth pruning is a declared scope limit, not a security pass. Resource exhaustion raises an error without returning partial analysis. Native screenshots remain unavailable after the prior URL-verification stop; actual path output is saved.
+
+Evidence: `evidence/logs/phase04-pathfinder-tests.txt`, `evidence/logs/phase04-path-output.txt`, `evidence/logs/phase04-depth-bound.txt`.
+
+Exact file/command details: `phases/phase-04.json`. Commit recorded after creation.

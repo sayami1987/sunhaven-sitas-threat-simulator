@@ -1,0 +1,83 @@
+{
+  "phase": 4,
+  "title": "Bounded iterative attack path discovery",
+  "recordedUtc": "2026-09-10T14:50:21.929805+00:00",
+  "status": "Completed",
+  "result": "Implemented iterative DFS, stable path IDs, cycle-safe backtracking, explicit depth bounds and resource-exhaustion errors. 29 tests passed including an independent BFS oracle. Actual synthetic query found two paths; depth3 found zero with14 pruned branches.",
+  "notes": "Depth pruning is a declared scope limit, not a security pass. Resource exhaustion raises an error without returning partial analysis. Native screenshots remain unavailable after the prior URL-verification stop; actual path output is saved.",
+  "filesAtRecording": [
+    "M docs/methodology/attack-graph-methodology.md",
+    " M evidence/Phase-Completion-Register.md",
+    " M evidence/phases/phase-03.json",
+    " M scripts/record_phase.py",
+    "?? evidence/08-testing/phase04-pathfinder.junit.xml",
+    "?? evidence/logs/phase03-github-push.execution.json",
+    "?? evidence/logs/phase03-github-push.txt",
+    "?? evidence/logs/phase04-depth-bound.execution.json",
+    "?? evidence/logs/phase04-depth-bound.txt",
+    "?? evidence/logs/phase04-path-output.execution.json",
+    "?? evidence/logs/phase04-path-output.txt",
+    "?? evidence/logs/phase04-pathfinder-tests.execution.json",
+    "?? evidence/logs/phase04-pathfinder-tests.txt",
+    "?? scripts/inspect_paths.py",
+    "?? src/pathfinder.py",
+    "?? tests/test_pathfinder.py"
+  ],
+  "evidence": [
+    {
+      "file": "evidence/logs/phase04-pathfinder-tests.txt",
+      "execution": {
+        "command": [
+          "python",
+          "-m",
+          "pytest",
+          "tests/test_pathfinder.py",
+          "-q",
+          "--junitxml=evidence/08-testing/phase04-pathfinder.junit.xml"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T14:50:07.272638+00:00",
+        "finishedUtc": "2026-09-10T14:50:08.064702+00:00",
+        "exitCode": 0,
+        "stdout": ".............................                                            [100%]\n- generated xml file: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\evidence\\08-testing\\phase04-pathfinder.junit.xml -\n29 passed in 0.20s\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "evidence/logs/phase04-path-output.txt",
+      "execution": {
+        "command": [
+          "python",
+          "scripts/inspect_paths.py"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T14:48:23.947760+00:00",
+        "finishedUtc": "2026-09-10T14:48:24.164274+00:00",
+        "exitCode": 0,
+        "stdout": "Source: attacker_external; target: asset_care_records; depth limit: 12\nPaths found: 2; edges examined: 65; depth-pruned branches: 0\nSITAS-AP-83382ac5fcc55aaf (5 edges)\n  attacker_external -> credential_social -> factor_mfa -> identity_worker -> app_care -> asset_care_records\n  Edges: edge_social_password_acquired, edge_social_mfa_approval, edge_mfa_worker_identity, edge_worker_care_portal, edge_care_records_access\nSITAS-AP-45aae794966a46d6 (4 edges)\n  attacker_external -> credential_worker -> identity_worker -> app_care -> asset_care_records\n  Edges: edge_worker_password_acquired, edge_worker_password_login, edge_worker_care_portal, edge_care_records_access\nReachability is conditional on the synthetic edges and selected depth bound.\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "evidence/logs/phase04-depth-bound.txt",
+      "execution": {
+        "command": [
+          "python",
+          "scripts/inspect_paths.py",
+          "--max-depth",
+          "3"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T14:48:53.047071+00:00",
+        "finishedUtc": "2026-09-10T14:48:53.264095+00:00",
+        "exitCode": 0,
+        "stdout": "Source: attacker_external; target: asset_care_records; depth limit: 3\nPaths found: 0; edges examined: 50; depth-pruned branches: 14\nReachability is conditional on the synthetic edges and selected depth bound.\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "commit": null
+}

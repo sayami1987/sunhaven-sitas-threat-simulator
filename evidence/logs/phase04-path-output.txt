@@ -1,0 +1,16 @@
+Started UTC: 2026-09-10T14:48:23.947760+00:00
+Command: ["python", "scripts/inspect_paths.py"]
+Exit code: 0
+
+STDOUT
+Source: attacker_external; target: asset_care_records; depth limit: 12
+Paths found: 2; edges examined: 65; depth-pruned branches: 0
+SITAS-AP-83382ac5fcc55aaf (5 edges)
+  attacker_external -> credential_social -> factor_mfa -> identity_worker -> app_care -> asset_care_records
+  Edges: edge_social_password_acquired, edge_social_mfa_approval, edge_mfa_worker_identity, edge_worker_care_portal, edge_care_records_access
+SITAS-AP-45aae794966a46d6 (4 edges)
+  attacker_external -> credential_worker -> identity_worker -> app_care -> asset_care_records
+  Edges: edge_worker_password_acquired, edge_worker_password_login, edge_worker_care_portal, edge_care_records_access
+Reachability is conditional on the synthetic edges and selected depth bound.
+
+STDERR

@@ -1,0 +1,10 @@
+Started UTC: 2026-09-10T14:48:53.047071+00:00
+Command: ["python", "scripts/inspect_paths.py", "--max-depth", "3"]
+Exit code: 0
+
+STDOUT
+Source: attacker_external; target: asset_care_records; depth limit: 3
+Paths found: 0; edges examined: 50; depth-pruned branches: 14
+Reachability is conditional on the synthetic edges and selected depth bound.
+
+STDERR

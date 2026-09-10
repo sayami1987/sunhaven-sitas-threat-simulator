@@ -29,9 +29,11 @@ def main():
         record = json.loads(path.read_text(encoding="utf-8"))
         record["commit"] = git("rev-parse", "HEAD")
         record["commitRecordedUtc"] = now
+        record["committedFiles"] = git("diff-tree", "--root", "--no-commit-id", "--name-status", "-r", "HEAD").splitlines()
         path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
-        with (ROOT / "evidence/Phase-Completion-Register.md").open("a", encoding="utf-8") as stream:
-            stream.write(f"\nPhase {args.phase:02} commit: `{record['commit']}`. Publication is verified separately in push logs.\n")
+        for name in ["Phase-Completion-Register.md", "Development-Journal.md"]:
+            with (ROOT / "evidence" / name).open("a", encoding="utf-8") as stream:
+                stream.write(f"\nPhase {args.phase:02} commit: `{record['commit']}`. Publication is verified separately in push logs.\n")
         print(record["commit"])
         return
     if path.exists():

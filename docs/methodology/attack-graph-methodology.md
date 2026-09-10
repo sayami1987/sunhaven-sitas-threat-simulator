@@ -25,6 +25,31 @@ pathfinding will use per-path visited nodes to avoid infinite traversal.
 Its phase log records the model that existed at the time of the command. Later
 model changes do not alter that historical output.
 
+## Path enumeration
+
+`src/pathfinder.py` performs iterative depth-first search with a stack of adjacency
+iterators. Each node is visited at most once within a particular path. On
+backtracking, its visited marker is removed, so routes that share later nodes
+are all discoverable. The target ends a path and is never expanded further.
+Stable edge-ID traversal and a digest of ordered edge IDs provide reproducible
+path identity, independent of graph insertion order.
+
+Maximum depth counts edges (default 12, supported range 1-500). An outgoing
+non-cycle branch beyond that depth is counted as depth-pruned and excluded from
+scope. This does not prove that deeper paths are absent. Maximum result count
+(default 10,000) and examined-edge budget (default 100,000) are resource limits;
+exceeding either raises `SearchLimitError` instead of returning partial results.
+
+Enumerating simple paths has exponential worst-case output size. The DFS stack
+and current visited path require O(depth) space in addition to the graph and
+stored result paths. Each path ID uses the first 16 hexadecimal characters of a
+SHA-256 digest prefixed with `SITAS-AP-`; comparisons use the complete ordered
+edge tuple, so display-digest truncation does not drive path matching.
+
+`python scripts/inspect_paths.py` prints paths in the entire synthetic catalogue
+for the selected source and target. The final analysis runner applies each
+scenario's explicit edge selection before invoking the same pathfinder.
+
 Graph reachability is conditional on the supplied edges and assumptions. The
 model does not automatically infer missing relationships, prove a vulnerability
 or test a real organisation's controls. It does not implement AND/OR privilege

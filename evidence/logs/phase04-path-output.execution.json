@@ -1,0 +1,13 @@
+{
+  "command": [
+    "python",
+    "scripts/inspect_paths.py"
+  ],
+  "workingDirectory": ".",
+  "pythonVersion": "3.12.14",
+  "startedUtc": "2026-09-10T14:48:23.947760+00:00",
+  "finishedUtc": "2026-09-10T14:48:24.164274+00:00",
+  "exitCode": 0,
+  "stdout": "Source: attacker_external; target: asset_care_records; depth limit: 12\nPaths found: 2; edges examined: 65; depth-pruned branches: 0\nSITAS-AP-83382ac5fcc55aaf (5 edges)\n  attacker_external -> credential_social -> factor_mfa -> identity_worker -> app_care -> asset_care_records\n  Edges: edge_social_password_acquired, edge_social_mfa_approval, edge_mfa_worker_identity, edge_worker_care_portal, edge_care_records_access\nSITAS-AP-45aae794966a46d6 (4 edges)\n  attacker_external -> credential_worker -> identity_worker -> app_care -> asset_care_records\n  Edges: edge_worker_password_acquired, edge_worker_password_login, edge_worker_care_portal, edge_care_records_access\nReachability is conditional on the synthetic edges and selected depth bound.\n",
+  "stderr": ""
+}
