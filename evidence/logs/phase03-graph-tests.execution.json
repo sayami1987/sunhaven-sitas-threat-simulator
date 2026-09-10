@@ -1,0 +1,17 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "tests/test_graph.py",
+    "-q",
+    "--junitxml=evidence/08-testing/phase03-graph.junit.xml"
+  ],
+  "workingDirectory": ".",
+  "pythonVersion": "3.12.14",
+  "startedUtc": "2026-09-10T14:46:24.916918+00:00",
+  "finishedUtc": "2026-09-10T14:46:25.847331+00:00",
+  "exitCode": 0,
+  "stdout": "...........................                                              [100%]\n- generated xml file: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\evidence\\08-testing\\phase03-graph.junit.xml -\n27 passed in 0.20s\n",
+  "stderr": ""
+}

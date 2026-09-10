@@ -29,3 +29,17 @@ Notes: Review found mutable node attributes; recursively froze nested data and v
 Evidence: `evidence/logs/phase02-loader-tests.txt`, `evidence/logs/phase02-final-model-validation.txt`.
 
 Exact file/command details: `phases/phase-02.json`. Commit recorded after creation.
+
+Phase 02 commit: `31a36543e282cf56e5d2b09f9ee609fdf838a498`. Publication is verified separately in push logs.
+
+## Phase 03 Directed graph construction
+
+UTC: 2026-09-10T14:46:43.397236+00:00
+
+Status: Completed. Implemented deterministic directed multigraph indexes, scenario edge selection, iterative cycle detection and graph inspection. 27 graph tests passed; current model has 47 nodes, 56 edges and no cycle.
+
+Notes: Parallel edges and cycles are supported and tested using handcrafted graphs even though the supplied synthetic environment has no cycle or parallel pair.
+
+Evidence: `evidence/logs/phase03-graph-tests.txt`, `evidence/logs/phase03-graph-output.txt`.
+
+Exact file/command details: `phases/phase-03.json`. Commit recorded after creation.

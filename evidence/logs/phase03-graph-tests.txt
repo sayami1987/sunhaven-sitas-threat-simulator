@@ -1,0 +1,10 @@
+Started UTC: 2026-09-10T14:46:24.916918+00:00
+Command: ["python", "-m", "pytest", "tests/test_graph.py", "-q", "--junitxml=evidence/08-testing/phase03-graph.junit.xml"]
+Exit code: 0
+
+STDOUT
+...........................                                              [100%]
+- generated xml file: C:\Users\Loo\OneDrive - CQUniversity (1)\Documents\ChatGPT\Capstone project cyberesecurity\sunhaven-sitas-threat-simulator\evidence\08-testing\phase03-graph.junit.xml -
+27 passed in 0.20s
+
+STDERR
