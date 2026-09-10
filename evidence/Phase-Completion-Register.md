@@ -99,3 +99,17 @@ Notes: Residual exposure is deliberate: MFA social approval score8, agency opera
 Evidence: `evidence/logs/phase07-scenario-tests.txt`, `evidence/logs/phase07-all-scenarios.txt`, `evidence/logs/phase07-baseline-scenarios.txt`.
 
 Exact file/command details: `phases/phase-07.json`. Commit recorded after creation.
+
+Phase 07 commit: `c080687f87bf8b9621837a02af59b4f283c549e1`. Publication is verified separately in push logs.
+
+## Phase 08 Command-line analysis and technical reports
+
+UTC: 2026-09-10T15:14:02.795751+00:00
+
+Status: Completed. Created coordinator and JSON/CSV/HTML exports with input/source fingerprints and edge-level scoring evidence.48 report/CLI tests and31 comparison/scenario regression tests passed. Actual all-control reports generated:15 baseline,12 blocked,3 remaining.
+
+Notes: Added explicit methodology section during review; final48 report/CLI tests rerun and passed. Tests include malicious display text, formula-like CSV, fixed-time byte equality, invalid input and interrupted output replacement. New UI screenshots unavailable; actual exports and execution logs retained.
+
+Evidence: `evidence/logs/phase08-comparison-regression.txt`, `evidence/logs/phase08-report-cli-tests.txt`, `evidence/logs/phase08-final-report-tests.txt`, `evidence/logs/phase08-report-generation.txt`, `evidence/logs/phase08-publication-scan.txt`.
+
+Exact file/command details: `phases/phase-08.json`. Commit recorded after creation.

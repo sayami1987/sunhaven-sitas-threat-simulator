@@ -93,5 +93,35 @@
       }
     }
   ],
-  "commit": null
+  "commit": "c080687f87bf8b9621837a02af59b4f283c549e1",
+  "commitRecordedUtc": "2026-09-10T15:06:46.230685+00:00",
+  "committedFiles": [
+    "A\tevidence/07-control-simulation/scenario-baseline.json",
+    "A\tevidence/07-control-simulation/scenario-results.json",
+    "A\tevidence/08-testing/phase07-scenarios.junit.xml",
+    "M\tevidence/Development-Journal.md",
+    "M\tevidence/Phase-Completion-Register.md",
+    "A\tevidence/logs/phase06-github-push.execution.json",
+    "A\tevidence/logs/phase06-github-push.txt",
+    "A\tevidence/logs/phase07-all-scenarios.execution.json",
+    "A\tevidence/logs/phase07-all-scenarios.txt",
+    "A\tevidence/logs/phase07-baseline-scenarios.execution.json",
+    "A\tevidence/logs/phase07-baseline-scenarios.txt",
+    "A\tevidence/logs/phase07-scenario-tests.execution.json",
+    "A\tevidence/logs/phase07-scenario-tests.txt",
+    "M\tevidence/phases/phase-06.json",
+    "A\tevidence/phases/phase-07.json",
+    "A\tscenarios/scenario-01-stolen-credential.json",
+    "A\tscenarios/scenario-02-shared-session.json",
+    "A\tscenarios/scenario-03-stale-identity.json",
+    "A\tscenarios/scenario-04-excessive-privilege.json",
+    "A\tscenarios/scenario-05-admin-compromise.json",
+    "A\tscenarios/scenario-06-mfa-social-engineering.json",
+    "A\tscenarios/scenario-07-session-reuse.json",
+    "A\tscenarios/scenario-08-agency-compromise.json",
+    "A\tscenarios/scenario-09-privilege-path.json",
+    "A\tscenarios/scenario-10-multistage.json",
+    "A\tscripts/run_scenarios.py",
+    "A\ttests/test_scenarios.py"
+  ]
 }

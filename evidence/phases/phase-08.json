@@ -1,0 +1,139 @@
+{
+  "phase": 8,
+  "title": "Command-line analysis and technical reports",
+  "recordedUtc": "2026-09-10T15:14:02.795751+00:00",
+  "status": "Completed",
+  "result": "Created coordinator and JSON/CSV/HTML exports with input/source fingerprints and edge-level scoring evidence.48 report/CLI tests and31 comparison/scenario regression tests passed. Actual all-control reports generated:15 baseline,12 blocked,3 remaining.",
+  "notes": "Added explicit methodology section during review; final48 report/CLI tests rerun and passed. Tests include malicious display text, formula-like CSV, fixed-time byte equality, invalid input and interrupted output replacement. New UI screenshots unavailable; actual exports and execution logs retained.",
+  "filesAtRecording": [
+    "M evidence/Development-Journal.md",
+    " M evidence/Phase-Completion-Register.md",
+    " M evidence/phases/phase-07.json",
+    " M src/comparison_engine.py",
+    "?? docs/design/report-contract.md",
+    "?? evidence/08-testing/phase08-comparison.junit.xml",
+    "?? evidence/08-testing/phase08-final-report.junit.xml",
+    "?? evidence/08-testing/phase08-report-cli.junit.xml",
+    "?? evidence/logs/phase07-github-push.execution.json",
+    "?? evidence/logs/phase07-github-push.txt",
+    "?? evidence/logs/phase08-comparison-regression.execution.json",
+    "?? evidence/logs/phase08-comparison-regression.txt",
+    "?? evidence/logs/phase08-final-report-tests.execution.json",
+    "?? evidence/logs/phase08-final-report-tests.txt",
+    "?? evidence/logs/phase08-publication-scan.execution.json",
+    "?? evidence/logs/phase08-publication-scan.txt",
+    "?? evidence/logs/phase08-report-cli-tests.execution.json",
+    "?? evidence/logs/phase08-report-cli-tests.txt",
+    "?? evidence/logs/phase08-report-generation.execution.json",
+    "?? evidence/logs/phase08-report-generation.txt",
+    "?? reports/csv/sitas-findings.csv",
+    "?? reports/html/sitas-threat-assessment.html",
+    "?? reports/json/sitas-findings.json",
+    "?? scripts/generate_reports.py",
+    "?? scripts/run_tests.py",
+    "?? src/report_generator.py",
+    "?? src/sitas.py",
+    "?? tests/test_cli.py",
+    "?? tests/test_reports.py"
+  ],
+  "evidence": [
+    {
+      "file": "evidence/logs/phase08-comparison-regression.txt",
+      "execution": {
+        "command": [
+          "python",
+          "-m",
+          "pytest",
+          "tests/test_comparison.py",
+          "tests/test_scenarios.py",
+          "-q",
+          "--junitxml=evidence/08-testing/phase08-comparison.junit.xml"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T15:10:58.678396+00:00",
+        "finishedUtc": "2026-09-10T15:10:59.701067+00:00",
+        "exitCode": 0,
+        "stdout": "...............................                                          [100%]\n- generated xml file: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\evidence\\08-testing\\phase08-comparison.junit.xml -\n31 passed in 0.28s\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "evidence/logs/phase08-report-cli-tests.txt",
+      "execution": {
+        "command": [
+          "python",
+          "-m",
+          "pytest",
+          "tests/test_reports.py",
+          "tests/test_cli.py",
+          "-q",
+          "--junitxml=evidence/08-testing/phase08-report-cli.junit.xml"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T15:12:52.111984+00:00",
+        "finishedUtc": "2026-09-10T15:12:56.656485+00:00",
+        "exitCode": 0,
+        "stdout": "................................................                         [100%]\n- generated xml file: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\evidence\\08-testing\\phase08-report-cli.junit.xml -\n48 passed in 3.74s\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "evidence/logs/phase08-final-report-tests.txt",
+      "execution": {
+        "command": [
+          "python",
+          "-m",
+          "pytest",
+          "tests/test_reports.py",
+          "tests/test_cli.py",
+          "-q",
+          "--junitxml=evidence/08-testing/phase08-final-report.junit.xml"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T15:13:35.397675+00:00",
+        "finishedUtc": "2026-09-10T15:13:39.170930+00:00",
+        "exitCode": 0,
+        "stdout": "................................................                         [100%]\n- generated xml file: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\evidence\\08-testing\\phase08-final-report.junit.xml -\n48 passed in 3.12s\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "evidence/logs/phase08-report-generation.txt",
+      "execution": {
+        "command": [
+          "python",
+          "scripts/generate_reports.py",
+          "--controls",
+          "all"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T15:13:41.250950+00:00",
+        "finishedUtc": "2026-09-10T15:13:41.518258+00:00",
+        "exitCode": 0,
+        "stdout": "SITAS Threat Assessment Report\nRun: SITAS-RUN-a38215aecc07a7e479deda07; synthetic environment: Sunhaven SITAS fictional synthetic environment\n{\n  \"baselinePaths\": 15,\n  \"blockedPaths\": 12,\n  \"remainingPaths\": 3,\n  \"reducedPaths\": 2,\n  \"unchangedPaths\": 1,\n  \"baselineExposure\": 228,\n  \"residualExposure\": 27,\n  \"exposureReductionPercent\": 88.16,\n  \"baselineSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 2,\n    \"High\": 9,\n    \"Critical\": 4\n  },\n  \"remainingSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 2,\n    \"High\": 1,\n    \"Critical\": 0\n  }\n}\nJSON: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\reports\\json\\sitas-findings.json\nCSV: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\reports\\csv\\sitas-findings.csv\nHTML: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\reports\\html\\sitas-threat-assessment.html\nScores describe the supplied model; they are not observed incident probabilities.\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "evidence/logs/phase08-publication-scan.txt",
+      "execution": {
+        "command": [
+          "python",
+          "scripts/check_publication.py"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T15:13:41.661626+00:00",
+        "finishedUtc": "2026-09-10T15:13:42.158567+00:00",
+        "exitCode": 0,
+        "stdout": "Publication pattern scan: 196 files; 0 flagged files/patterns\nScope: Git-visible current files. Pattern checks supplement source and screenshot review; they do not prove absence of every possible secret.\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "commit": null
+}

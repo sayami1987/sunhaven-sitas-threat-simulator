@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python",
+    "scripts/generate_reports.py",
+    "--controls",
+    "all"
+  ],
+  "workingDirectory": ".",
+  "pythonVersion": "3.12.14",
+  "startedUtc": "2026-09-10T15:13:41.250950+00:00",
+  "finishedUtc": "2026-09-10T15:13:41.518258+00:00",
+  "exitCode": 0,
+  "stdout": "SITAS Threat Assessment Report\nRun: SITAS-RUN-a38215aecc07a7e479deda07; synthetic environment: Sunhaven SITAS fictional synthetic environment\n{\n  \"baselinePaths\": 15,\n  \"blockedPaths\": 12,\n  \"remainingPaths\": 3,\n  \"reducedPaths\": 2,\n  \"unchangedPaths\": 1,\n  \"baselineExposure\": 228,\n  \"residualExposure\": 27,\n  \"exposureReductionPercent\": 88.16,\n  \"baselineSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 2,\n    \"High\": 9,\n    \"Critical\": 4\n  },\n  \"remainingSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 2,\n    \"High\": 1,\n    \"Critical\": 0\n  }\n}\nJSON: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\reports\\json\\sitas-findings.json\nCSV: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\reports\\csv\\sitas-findings.csv\nHTML: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\reports\\html\\sitas-threat-assessment.html\nScores describe the supplied model; they are not observed incident probabilities.\n",
+  "stderr": ""
+}

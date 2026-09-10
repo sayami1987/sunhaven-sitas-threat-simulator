@@ -1,0 +1,13 @@
+{
+  "command": [
+    "python",
+    "scripts/check_publication.py"
+  ],
+  "workingDirectory": ".",
+  "pythonVersion": "3.12.14",
+  "startedUtc": "2026-09-10T15:13:41.661626+00:00",
+  "finishedUtc": "2026-09-10T15:13:42.158567+00:00",
+  "exitCode": 0,
+  "stdout": "Publication pattern scan: 196 files; 0 flagged files/patterns\nScope: Git-visible current files. Pattern checks supplement source and screenshot review; they do not prove absence of every possible secret.\n",
+  "stderr": ""
+}
