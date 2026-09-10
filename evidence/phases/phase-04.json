@@ -79,5 +79,26 @@
       }
     }
   ],
-  "commit": null
+  "commit": "23b784f071d7250cdc3e0898220cba8bbe200498",
+  "commitRecordedUtc": "2026-09-10T14:50:22.999304+00:00",
+  "committedFiles": [
+    "M\tdocs/methodology/attack-graph-methodology.md",
+    "A\tevidence/08-testing/phase04-pathfinder.junit.xml",
+    "M\tevidence/Development-Journal.md",
+    "M\tevidence/Phase-Completion-Register.md",
+    "A\tevidence/logs/phase03-github-push.execution.json",
+    "A\tevidence/logs/phase03-github-push.txt",
+    "A\tevidence/logs/phase04-depth-bound.execution.json",
+    "A\tevidence/logs/phase04-depth-bound.txt",
+    "A\tevidence/logs/phase04-path-output.execution.json",
+    "A\tevidence/logs/phase04-path-output.txt",
+    "A\tevidence/logs/phase04-pathfinder-tests.execution.json",
+    "A\tevidence/logs/phase04-pathfinder-tests.txt",
+    "M\tevidence/phases/phase-03.json",
+    "A\tevidence/phases/phase-04.json",
+    "A\tscripts/inspect_paths.py",
+    "M\tscripts/record_phase.py",
+    "A\tsrc/pathfinder.py",
+    "A\ttests/test_pathfinder.py"
+  ]
 }

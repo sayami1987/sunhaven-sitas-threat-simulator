@@ -57,3 +57,17 @@ Notes: Depth pruning is a declared scope limit, not a security pass. Resource ex
 Evidence: `evidence/logs/phase04-pathfinder-tests.txt`, `evidence/logs/phase04-path-output.txt`, `evidence/logs/phase04-depth-bound.txt`.
 
 Exact file/command details: `phases/phase-04.json`. Commit recorded after creation.
+
+Phase 04 commit: `23b784f071d7250cdc3e0898220cba8bbe200498`. Publication is verified separately in push logs.
+
+## Phase 05 Deterministic ordinal risk scoring
+
+UTC: 2026-09-10T14:52:47.701716+00:00
+
+Status: Completed. Implemented minimum-edge likelihood, target impact, product, severity and stable ranking. 37 risk tests passed. Both current care-record paths score4 x5 =20 Critical in the synthetic baseline.
+
+Notes: Scoring validates the ordered path and target impact. The ordinal model is an educational convention rather than a calibrated probability. Actual arithmetic output is saved.
+
+Evidence: `evidence/logs/phase05-risk-tests.txt`, `evidence/logs/phase05-risk-output.txt`.
+
+Exact file/command details: `phases/phase-05.json`. Commit recorded after creation.

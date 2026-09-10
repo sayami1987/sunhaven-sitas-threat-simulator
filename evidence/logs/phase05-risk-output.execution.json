@@ -1,0 +1,13 @@
+{
+  "command": [
+    "python",
+    "scripts/inspect_risk.py"
+  ],
+  "workingDirectory": ".",
+  "pythonVersion": "3.12.14",
+  "startedUtc": "2026-09-10T14:51:47.930804+00:00",
+  "finishedUtc": "2026-09-10T14:51:48.130205+00:00",
+  "exitCode": 0,
+  "stdout": "SITAS-AP-45aae794966a46d6: min[4, 4, 4, 4] = 4; impact=5; 4 x 5 = 20 (Critical)\nSITAS-AP-83382ac5fcc55aaf: min[4, 4, 4, 4, 4] = 4; impact=5; 4 x 5 = 20 (Critical)\nScores are synthetic educational indicators, not exact probabilities.\n",
+  "stderr": ""
+}

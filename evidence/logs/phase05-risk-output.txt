@@ -1,0 +1,10 @@
+Started UTC: 2026-09-10T14:51:47.930804+00:00
+Command: ["python", "scripts/inspect_risk.py"]
+Exit code: 0
+
+STDOUT
+SITAS-AP-45aae794966a46d6: min[4, 4, 4, 4] = 4; impact=5; 4 x 5 = 20 (Critical)
+SITAS-AP-83382ac5fcc55aaf: min[4, 4, 4, 4, 4] = 4; impact=5; 4 x 5 = 20 (Critical)
+Scores are synthetic educational indicators, not exact probabilities.
+
+STDERR

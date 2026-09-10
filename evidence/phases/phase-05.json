@@ -1,0 +1,63 @@
+{
+  "phase": 5,
+  "title": "Deterministic ordinal risk scoring",
+  "recordedUtc": "2026-09-10T14:52:47.701716+00:00",
+  "status": "Completed",
+  "result": "Implemented minimum-edge likelihood, target impact, product, severity and stable ranking. 37 risk tests passed. Both current care-record paths score4 x5 =20 Critical in the synthetic baseline.",
+  "notes": "Scoring validates the ordered path and target impact. The ordinal model is an educational convention rather than a calibrated probability. Actual arithmetic output is saved.",
+  "filesAtRecording": [
+    "M evidence/Development-Journal.md",
+    " M evidence/Phase-Completion-Register.md",
+    " M evidence/phases/phase-04.json",
+    "?? docs/methodology/risk-methodology.md",
+    "?? evidence/08-testing/phase05-risk.junit.xml",
+    "?? evidence/logs/phase04-github-push.execution.json",
+    "?? evidence/logs/phase04-github-push.txt",
+    "?? evidence/logs/phase05-risk-output.execution.json",
+    "?? evidence/logs/phase05-risk-output.txt",
+    "?? evidence/logs/phase05-risk-tests.execution.json",
+    "?? evidence/logs/phase05-risk-tests.txt",
+    "?? scripts/inspect_risk.py",
+    "?? src/risk_engine.py",
+    "?? tests/test_risk.py"
+  ],
+  "evidence": [
+    {
+      "file": "evidence/logs/phase05-risk-tests.txt",
+      "execution": {
+        "command": [
+          "python",
+          "-m",
+          "pytest",
+          "tests/test_risk.py",
+          "-q",
+          "--junitxml=evidence/08-testing/phase05-risk.junit.xml"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T14:52:24.721291+00:00",
+        "finishedUtc": "2026-09-10T14:52:25.780693+00:00",
+        "exitCode": 0,
+        "stdout": ".....................................                                    [100%]\n- generated xml file: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\evidence\\08-testing\\phase05-risk.junit.xml -\n37 passed in 0.19s\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "evidence/logs/phase05-risk-output.txt",
+      "execution": {
+        "command": [
+          "python",
+          "scripts/inspect_risk.py"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T14:51:47.930804+00:00",
+        "finishedUtc": "2026-09-10T14:51:48.130205+00:00",
+        "exitCode": 0,
+        "stdout": "SITAS-AP-45aae794966a46d6: min[4, 4, 4, 4] = 4; impact=5; 4 x 5 = 20 (Critical)\nSITAS-AP-83382ac5fcc55aaf: min[4, 4, 4, 4, 4] = 4; impact=5; 4 x 5 = 20 (Critical)\nScores are synthetic educational indicators, not exact probabilities.\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "commit": null
+}
