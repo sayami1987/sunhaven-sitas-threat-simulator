@@ -18,6 +18,7 @@ def main():
     parser.add_argument("--title")
     parser.add_argument("--result")
     parser.add_argument("--notes", default="No additional issue recorded.")
+    parser.add_argument("--status", choices=["Completed", "Partially Completed", "Blocked"], default="Completed")
     parser.add_argument("--log", action="append", default=[])
     parser.add_argument("--commit", action="store_true")
     args = parser.parse_args()
@@ -48,11 +49,11 @@ def main():
         execution = logpath.with_suffix(".execution.json")
         logs.append({"file": name, "execution": json.loads(execution.read_text(encoding="utf-8")) if execution.exists() else None})
     changed = git("status", "--short", "--untracked-files=all").splitlines()
-    record = {"phase": args.phase, "title": args.title, "recordedUtc": now, "status": "Completed",
+    record = {"phase": args.phase, "title": args.title, "recordedUtc": now, "status": args.status,
               "result": args.result, "notes": args.notes, "filesAtRecording": changed,
               "evidence": logs, "commit": None}
     path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
-    text = f"\n## Phase {args.phase:02} {args.title}\n\nUTC: {now}\n\nStatus: Completed. {args.result}\n\nNotes: {args.notes}\n\n"
+    text = f"\n## Phase {args.phase:02} {args.title}\n\nUTC: {now}\n\nStatus: {args.status}. {args.result}\n\nNotes: {args.notes}\n\n"
     text += "Evidence: " + (", ".join(f"`{x['file']}`" for x in logs) or "Created artefacts recorded in the phase JSON") + ".\n"
     text += f"\nExact file/command details: `phases/phase-{args.phase:02}.json`. Commit recorded after creation.\n"
     for name in ["Development-Journal.md", "Phase-Completion-Register.md"]:

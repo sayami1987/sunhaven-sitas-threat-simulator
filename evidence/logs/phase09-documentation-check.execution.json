@@ -1,0 +1,13 @@
+{
+  "command": [
+    "python",
+    "scripts/check_documentation.py"
+  ],
+  "workingDirectory": ".",
+  "pythonVersion": "3.12.14",
+  "startedUtc": "2026-09-10T15:24:22.151694+00:00",
+  "finishedUtc": "2026-09-10T15:24:22.470271+00:00",
+  "exitCode": 0,
+  "stdout": "Documentation: 22 files; 225 local links; 0 issues\nIdentifier and link checks do not establish native diagram completion or final acceptance.\n",
+  "stderr": ""
+}

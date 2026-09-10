@@ -1,92 +1,91 @@
 # SITAS system design
 
-SITAS is an educational Python application for analysing identity attack paths in the fictional Sunhaven Care environment. It loads local JSON, discovers ways a simulated attacker can reach a protected asset, assigns an explainable ordinal risk score, and compares the same scenario after selected security controls. The design supports a repeatable laptop demonstration and reports that a reader can trace back to the model.
-
-This document defines the implementation contract. Execution evidence and test results belong in the testing and evidence records; design statements do not establish that a feature has passed testing.
+SITAS is an educational Python application for analysing identity attack paths in the fictional Sunhaven Care environment. It validates local synthetic JSON, discovers bounded routes to a protected asset, calculates explainable ordinal risk and compares routes after selected controls. This document describes the implemented system; execution evidence remains in the testing and evidence records.
 
 ## Problem and objectives
 
-Sunhaven represents a care setting with permanent and agency workers, sensitive resident information, shared devices and privileged administration. A diagram showing authentication and access controls alone cannot explain the combinations of weaknesses that expose an asset. SITAS makes those combinations explicit as directed paths through a synthetic model.
+The care-setting model includes workers, agency identities, shared devices, protected information and privileged administration. An access diagram alone does not explain how weaknesses combine to expose an asset. SITAS makes those combinations explicit as directed paths with identifiers, readable preconditions and scores.
 
-The objectives are to validate the model, enumerate bounded simple paths, calculate transparent risk indicators, apply explicit control rules, preserve explanations for blocked paths, and produce consistent JSON, CSV and HTML results. Every input and output concerns a fictional simulation.
+The application validates inputs, enumerates simple paths, preserves parallel mechanisms, applies transparent block/cap rules, retains blocked-path explanations and generates consistent JSON, CSV and HTML. It performs no discovery, authentication, scanning or live control enforcement.
 
-## Architecture
+## Architecture and execution
 
 ```mermaid
 flowchart LR
-    I[Local environment and scenario JSON] --> V[Validation and data models]
+    I[Local JSON inputs] --> V[Loader and validated records]
     V --> G[Scenario directed multigraph]
-    G --> P[Baseline path enumeration]
-    P --> R[Baseline risk scoring]
-    C[Local control definitions and selection] --> E[Control simulation]
-    G --> E
-    E --> H[Controlled graph]
-    H --> Q[Controlled path enumeration and scoring]
-    R --> X[Comparison by ordered edge IDs]
-    Q --> X
-    E --> X
-    X --> O[JSON CSV HTML reports]
+    G --> B[Baseline iterative DFS and risk]
+    G --> C[Selected control rules]
+    C --> H[New controlled graph]
+    H --> R[Controlled iterative DFS and risk]
+    B --> X[Comparison by ordered edge IDs]
+    R --> X
+    C --> X
+    X --> A[One result with provenance]
+    A --> O[JSON CSV HTML exports]
 ```
 
-Python 3.11 or later and the standard library provide the runtime. Dataclasses represent validated nodes, edges, scenarios and controls. JSON configuration remains separate from source code. Test tooling is a development dependency rather than a simulation service. The report can be opened locally without a web server or network connection.
+The analysis and report runtime uses the Python standard library. Python 3.11+ is the compatibility target; recorded development execution used Python 3.12.14. That record does not establish testing on other versions. Native Draw.io authoring and export is required for final diagram deliverables and remains pending. Earlier custom-rendered PNGs were archived privately outside the repository and are not final deliverables or evidence of native export.
 
-## Input contracts
+`src.sitas.analyse(...)` returns a result dictionary without writing reports. `python -m src.sitas` is the CLI; `scripts/generate_reports.py` exposes the same interface from another working directory. Defaults resolve to `config/environment.json`, `config/controls.json`, `config/risk-model.json` and `scenarios` beneath the repository. Every scenario file is loaded and validated before scenario selection is applied.
 
-| Input | Required meaning | Validation obligations |
-| --- | --- | --- |
-| Environment | Synthetic environment identity; nodes; directed edges | Unique stable IDs; known node types; nonempty descriptions; valid endpoints; integer likelihood values from 1 to 5; asset impact from 1 to 5 |
-| Scenario | Stable scenario ID; title; source; target; allowed edge IDs | Referenced nodes and edges exist; target is a protected asset; source and target are distinct; selected edges form the scenario graph |
-| Controls | Stable control IDs; names; explicit rules; explanations | Supported actions only; well-formed tag and target selectors; likelihood caps in the permitted range |
-| Risk model | Ordinal likelihood and impact scales; severity ranges | Required scale and severity coverage; no gaps or overlapping ranges |
-| Run settings | Scenario selection; control selection; maximum depth; resource limits | Valid selections and positive integer limits; reject unknown controls or scenarios |
+The CLI accepts `--controls all`, `--controls none`, or comma-separated control IDs. Repeated `--scenario` arguments narrow selection. Unknown selections fail. `--list-scenarios` validates the environment and scenarios, lists them and writes no report. [Component design](component-design.md) gives exact contracts and limits.
 
-A scenario selects edges from one common environment; it does not discover data from external systems. An edge represents a transition whose stated preconditions are assumed within that scenario. Tags identify the security condition to which a control rule applies. IDs identify objects; display names and explanations are readable labels, never executable expressions.
+## Model and processing sequence
 
-The graph is a directed multigraph: two edges can have identical endpoints while representing different attack mechanisms. Their distinct IDs must survive graph construction, pathfinding and reporting.
+The loader produces frozen records in canonical ID order. Node attributes are copied into read-only mappings and tuples. Graph construction retains all environment nodes and selects the scenario's allowed edges, so unused nodes can appear as isolated nodes. Sorted, read-only node/edge maps and adjacency tuples preserve parallel edges as distinct transitions.
 
-## Processing sequence
+An edge explanation states an assumed prerequisite; tags identify control conditions. Names and explanations are data, never executable expressions. Scenarios select existing relationships rather than discover or create external data.
 
-1. Read and validate all selected configuration before analysis.
-2. Construct the scenario graph from its allowed edge IDs and resolve its source and target.
-3. Enumerate baseline simple paths using iterative depth-first search.
-4. Score each path and retain its ordered nodes and edges.
-5. Apply the selected controls to a separate graph representation and record every matched rule and effect.
-6. Enumerate and score the controlled graph using the same path limits.
-7. Match paths using their ordered edge IDs, classify their outcome and retain the baseline explanation for blocked findings.
-8. Aggregate scenario metrics and write the three report formats from a common result object.
+For each selected scenario the coordinator:
 
-Keeping the baseline unchanged allows repeated control selections to be compared without accumulated state from an earlier run.
+1. Builds its baseline graph and enumerates bounded simple paths.
+2. Applies selected controls to a new graph and records every matched rule.
+3. Enumerates the controlled graph with the same bounds.
+4. Scores and compares baseline/surviving paths by ordered edge-ID tuple.
+5. Retains one finding per baseline path, including disappeared paths and reasons.
+6. Aggregates scenario-path findings into a result with provenance.
 
-## Pathfinding and identity
+The baseline remains unchanged, so later selections do not inherit earlier control modifications.
 
-An iterative DFS stack holds the current node, ordered edge sequence and the nodes visited on that path. An edge is eligible only if its destination has not already appeared on the current path. A global visited-node set is unsuitable because it would suppress alternative routes that legitimately share nodes. Adjacency traversal is ordered by stable edge ID.
+## Search scope and identity
 
-Maximum depth is measured in edges and is an explicit analysis bound. Paths longer than that bound are outside the run's scope. The run also has limits on work or results so a large graph cannot grow without restraint. Exhausting a resource limit raises an explicit analysis error; a partial search must not be presented as a complete safe result. A report of zero paths means zero paths found within the declared model and depth bound.
+Iterative DFS maintains the current route, an iterator stack and a visited-node set for that route. Backtracking removes nodes from the set, allowing alternatives through shared nodes. Reaching the target ends that path. Parallel edges yield distinct paths even when node sequences match.
 
-The ordered edge-ID tuple is the canonical path identity. A stable report path ID is derived from that identity; display ordering must not change identity. Parallel edges therefore yield distinct paths even when the node sequence is identical. Findings also carry their scenario ID so that the same path in two scenarios is not confused with one record.
+Defaults are **12 edges of depth, 10,000 paths and 100,000 examined edge expansions**, independently for each scenario's baseline and controlled search. Depth is an explicit scope boundary: excluded extensions increment `depthPruned`, which counts transitions rather than omitted complete paths. Exceeding a path or expansion budget raises `SearchLimitError` and aborts analysis without presenting partial findings as complete.
 
-## Scoring and control semantics
+The ordered edge tuple is canonical path identity. `path_id(...)` derives a stable `SITAS-AP-` identifier from its SHA-256 digest. Finding IDs also incorporate the scenario ID. These shortened digest labels are deterministic, not mathematically collision-free or security attestations.
 
-Path likelihood is the minimum ordinal likelihood among its edges. Target impact is the protected asset's configured integer from 1 to 5. Risk is their product. Severity is Low for 1–4, Medium for 5–9, High for 10–16 and Critical for 17–25. These are educational ranking conventions, not calibrated probabilities or financial estimates.
+## Risk, controls and comparison
 
-A control rule matches explicitly tagged edges and any configured target selector. Its action either blocks the transition or caps its likelihood. Multiple caps compose by taking the minimum of the original likelihood and every matching cap. Blocking dominates caps. These rules are order independent and idempotent: changing control order or applying the same control twice does not compound a score reduction.
+Path likelihood is the minimum edge ordinal from 1 to 5. Target impact is its configured integer from 1 to 5. Their product maps to Low 1-4, Medium 5-9, High 10-16 or Critical 17-25. The minimum is a **bottleneck ordinal convention**, not a conservative bound, measured likelihood or probability.
 
-Controls do not add attack paths. An additional authentication requirement is represented by blocking a transition whose modeled prerequisite is missing, or by capping a transition representing a remaining bypass possibility. The simulator does not dynamically create a new authentication protocol.
+A selected rule matches its tag and, when supplied, the edge's target-node selector. Blocks remove edges; caps take the minimum original score and all matching caps. Blocking dominates. No control adds nodes, edges or attack mechanisms. A relevant control matches a path from the configured catalogue; an applied control has a selected matching rule.
 
-## Comparison and reports
+Findings are blocked, reduced or unchanged. Blocked findings retain baseline risk and ordered paths with `residual: null`. A surviving path is reduced only when its recalculated score is lower. A cap on a non-minimum edge can leave path risk unchanged while remaining visible in the explanation.
 
-Each baseline finding becomes blocked, reduced or unchanged. A blocked finding retains its baseline score, ordered path and the edge/control reasons that prevented it. Its remaining exposure is represented separately; a blocked path is not a surviving Low-severity path. A surviving path is reduced only when its recalculated risk is lower. A rule can affect an edge while leaving the minimum path likelihood unchanged; that effect should remain visible without inventing a path-risk reduction.
+`controlEffects` records individual rule results against original edge scores. Ordered `edgeDetails` records original and **combined** controlled likelihoods. Two caps may report individual `5 -> 3` and `5 -> 2` effects while the effective edge value is 2; any block gives a combined value of `null`. These operands expose the path-minimum and impact calculation.
 
-Summary metrics include baseline, blocked and remaining path counts, reduced and unchanged counts, severity distributions, and highest-risk surviving paths. Aggregated counts are scenario-path records, not a count of independent real-world incidents. JSON retains structured findings and provenance; CSV provides one row per finding; HTML presents the threat assessment, comparison, explanations, assumptions and limitations. HTML escapes input-derived text and CSV protects spreadsheet consumers from formula-like values.
+Counts reconcile as baseline = blocked + remaining, and remaining = reduced + unchanged. Exposure sums path scores. Shared edges/assets, including across scenarios, mean totals and percentage changes are comparison indices, not independent incident counts, probabilities or expected financial losses.
 
-Analysis is deterministic for the same validated inputs and settings. Report timestamps describe generation time and are metadata; reproducibility checks should fix that metadata or compare the semantic analysis separately.
+## Reports and provenance
 
-## Failure handling and validation approach
+Default exports are:
 
-Malformed JSON, wrong types, duplicate IDs, missing references, unsupported rules and invalid limits must produce a clear error and an unsuccessful run. An unreachable target in a valid bounded graph is a valid zero-path analysis. Those outcomes must remain distinguishable.
+- `reports/json/sitas-findings.json`
+- `reports/csv/sitas-findings.csv`
+- `reports/html/sitas-threat-assessment.html`
 
-Verification should combine focused unit tests for validation and algorithms, scenario tests for individual controls, and integration tests for report consistency and repeat execution. Actual execution results must be recorded after the corresponding implementation is run. Publication review should inspect source, fixtures, generated reports and history for secrets and private data.
+`--output` changes their common root. JSON schema version 1 preserves the complete result. CSV has one finding per row, compact structured JSON, flattened risk and run identifiers. HTML presents summaries, scenarios, residual ranking, every ordered path and edge rationale, controls, bounds, metadata, assumptions and limitations. UTF-8 HTML escapes text/attributes, contains no scripts or network-loaded assets and links only eligible HTTP/HTTPS references. CSV neutralises formula-like scalar text; JSON retains original strings.
 
-## Development sequence
+`inputFingerprint` hashes canonical validated environment, all configured controls, risk model and selected scenarios. `engineFingerprint` hashes all direct `src/*.py` source texts with normalised line endings. `simulationId` combines both fingerprints and settings, excluding timestamp. It is not a Git commit ID and does not fingerprint dependencies, the interpreter or every repository file.
 
-Design and requirements precede the synthetic model and loader. Graph construction follows validation; pathfinding follows graph construction; risk calculation follows path enumeration. Control simulation and comparison then extend the baseline analysis. Scenario completion, reporting, diagrams and documentation support the demonstration. Final validation records actual tests, results, logs and repository state. Each commit should describe work that exists when committed.
+`generatedAt` defaults to actual UTC time. An explicit timezone-aware `--timestamp` normalises to UTC for reproducible exports; it is supplied metadata, not independent execution-time evidence. Fixed result objects render deterministically. Input JSON formatting does not affect the validated snapshot; meaningful values and ordered attribute arrays can.
+
+All formats render before filesystem writes and all temporary outputs are staged before replacement. Replacement is atomic per file, **not one transaction across three files**. A later failure can leave complete files from different runs; validation/search failure leaves older reports untouched. Check run IDs and timestamps after failure and rerun successfully for a consistent set. See [Report contract](report-contract.md).
+
+## Recorded example and validation boundary
+
+The [Phase 8 report-generation record](../../evidence/logs/phase08-report-generation.execution.json) and [saved JSON report](../../reports/json/sitas-findings.json) record 15 baseline paths, 12 blocked and three residual paths with all supplied controls. The remaining assumptions concern MFA approval, an authorised agency operator and an authorised support export. [Assumptions and limitations](../limitations/assumptions-and-limitations.md) explains them.
+
+That evidence describes the supplied model and recorded run. Finite tests and fixtures do not establish correctness for every possible model or validate real-world assumptions. Native Draw.io deliverables remain a separate, pending part of Phase 9.

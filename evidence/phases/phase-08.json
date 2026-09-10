@@ -135,5 +135,38 @@
       }
     }
   ],
-  "commit": null
+  "commit": "eb96fecbf82cd4304b765eca73750c24039e82f6",
+  "commitRecordedUtc": "2026-09-10T15:14:06.012494+00:00",
+  "committedFiles": [
+    "A\tdocs/design/report-contract.md",
+    "A\tevidence/08-testing/phase08-comparison.junit.xml",
+    "A\tevidence/08-testing/phase08-final-report.junit.xml",
+    "A\tevidence/08-testing/phase08-report-cli.junit.xml",
+    "M\tevidence/Development-Journal.md",
+    "M\tevidence/Phase-Completion-Register.md",
+    "A\tevidence/logs/phase07-github-push.execution.json",
+    "A\tevidence/logs/phase07-github-push.txt",
+    "A\tevidence/logs/phase08-comparison-regression.execution.json",
+    "A\tevidence/logs/phase08-comparison-regression.txt",
+    "A\tevidence/logs/phase08-final-report-tests.execution.json",
+    "A\tevidence/logs/phase08-final-report-tests.txt",
+    "A\tevidence/logs/phase08-publication-scan.execution.json",
+    "A\tevidence/logs/phase08-publication-scan.txt",
+    "A\tevidence/logs/phase08-report-cli-tests.execution.json",
+    "A\tevidence/logs/phase08-report-cli-tests.txt",
+    "A\tevidence/logs/phase08-report-generation.execution.json",
+    "A\tevidence/logs/phase08-report-generation.txt",
+    "M\tevidence/phases/phase-07.json",
+    "A\tevidence/phases/phase-08.json",
+    "A\treports/csv/sitas-findings.csv",
+    "A\treports/html/sitas-threat-assessment.html",
+    "A\treports/json/sitas-findings.json",
+    "A\tscripts/generate_reports.py",
+    "A\tscripts/run_tests.py",
+    "M\tsrc/comparison_engine.py",
+    "A\tsrc/report_generator.py",
+    "A\tsrc/sitas.py",
+    "A\ttests/test_cli.py",
+    "A\ttests/test_reports.py"
+  ]
 }

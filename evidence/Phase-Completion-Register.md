@@ -113,3 +113,17 @@ Notes: Added explicit methodology section during review; final48 report/CLI test
 Evidence: `evidence/logs/phase08-comparison-regression.txt`, `evidence/logs/phase08-report-cli-tests.txt`, `evidence/logs/phase08-final-report-tests.txt`, `evidence/logs/phase08-report-generation.txt`, `evidence/logs/phase08-publication-scan.txt`.
 
 Exact file/command details: `phases/phase-08.json`. Commit recorded after creation.
+
+Phase 08 commit: `eb96fecbf82cd4304b765eca73750c24039e82f6`. Publication is verified separately in push logs.
+
+## Phase 09 Technical documentation and native Draw.io checkpoint
+
+UTC: 2026-09-10T15:25:41.696573+00:00
+
+Status: Partially Completed. Updated design, threat model, scenario catalogue, technical summary, README and traceability for24FRs,12NFRs and24 acceptance IDs. Documentation check:22 files,225 local links,0 issues.314 tests collected; no final full-suite execution claimed. Five editable diagram drafts saved, native authoring/export pending.
+
+Notes: User required diagrams in Draw.io itself. Custom PNG workflow stopped; five draft PNGs and renderer archived privately. Prior native UI URL-verification stop prevents further UI actions; no Draw.io connector or executable found. Earlier custom export log retained as history, not native completion. Initial PowerShell archive command failed without moving files; corrected checked-path command succeeded. Phase9 remains partial; phases10-12 pending. Two existing genuine screenshots registered; no new captures.
+
+Evidence: `evidence/logs/phase09-diagram-export.txt`, `evidence/logs/phase09-test-collection.txt`, `evidence/logs/phase09-screenshot-register.txt`, `evidence/logs/phase09-documentation-check.txt`, `evidence/logs/phase09-final-documentation-check.txt`, `evidence/logs/phase09-publication-scan.txt`.
+
+Exact file/command details: `phases/phase-09.json`. Commit recorded after creation.

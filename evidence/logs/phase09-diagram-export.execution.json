@@ -1,0 +1,13 @@
+{
+  "command": [
+    "python",
+    "scripts/export_diagrams.py"
+  ],
+  "workingDirectory": ".",
+  "pythonVersion": "3.12.14",
+  "startedUtc": "2026-09-10T15:16:43.262345+00:00",
+  "finishedUtc": "2026-09-10T15:16:44.981415+00:00",
+  "exitCode": 0,
+  "stdout": "Exported C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\docs\\diagrams\\sitas-attack-path-flow.png (2640 x 1740) from sitas-attack-path-flow.drawio\nExported C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\docs\\diagrams\\sitas-component-design.png (2850 x 1890) from sitas-component-design.drawio\nExported C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\docs\\diagrams\\sitas-control-simulation.png (2700 x 1605) from sitas-control-simulation.drawio\nExported C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\docs\\diagrams\\sitas-high-level-architecture.png (2640 x 1500) from sitas-high-level-architecture.drawio\nExported C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\docs\\diagrams\\sitas-individual-boundary.png (2640 x 1560) from sitas-individual-boundary.drawio\n",
+  "stderr": ""
+}

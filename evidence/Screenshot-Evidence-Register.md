@@ -10,3 +10,5 @@ These are genuine application captures. Diagram exports and command logs are sto
 Capture methods and privacy-review notes are recorded in `screenshots/captures.json`.
 
 Native terminal automation is unavailable under the installed computer-use tool's rules. Actual terminal output is preserved in `logs/`. For a terminal screenshot, run the exact command in the corresponding execution JSON, then capture the command, complete result and visible application title manually. Do not replace command evidence with a drawn terminal image.
+
+Browser interaction subsequently stopped because the computer-use tool could not verify the current browser URL. No later UI captures were attempted. Native Draw.io authoring and PNG exports remain pending; see `../docs/diagrams/README.md` for exact files and actions. The earlier custom PNG drafts are archived privately and are not screenshot evidence.

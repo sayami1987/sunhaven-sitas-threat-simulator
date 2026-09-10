@@ -18,7 +18,8 @@ def main():
         cells = [row["number"], row["filename"], row["captured_at_utc"], row["phase"], row["task"] + "; " + row["action"], row["expected"], row["actual"], row["requirement"], row["test"], row["commit"]]
         lines.append("| " + " | ".join(str(x).replace("|", "/").replace("\n", " ") for x in cells) + " |")
     lines += ["", "Capture methods and privacy-review notes are recorded in `screenshots/captures.json`.", "",
-              "Native terminal automation is unavailable under the installed computer-use tool's rules. Actual terminal output is preserved in `logs/`. For a terminal screenshot, run the exact command in the corresponding execution JSON, then capture the command, complete result and visible application title manually. Do not replace command evidence with a drawn terminal image.", ""]
+              "Native terminal automation is unavailable under the installed computer-use tool's rules. Actual terminal output is preserved in `logs/`. For a terminal screenshot, run the exact command in the corresponding execution JSON, then capture the command, complete result and visible application title manually. Do not replace command evidence with a drawn terminal image.", "",
+              "Browser interaction subsequently stopped because the computer-use tool could not verify the current browser URL. No later UI captures were attempted. Native Draw.io authoring and PNG exports remain pending; see `../docs/diagrams/README.md` for exact files and actions. The earlier custom PNG drafts are archived privately and are not screenshot evidence.", ""]
     (ROOT / "evidence/Screenshot-Evidence-Register.md").write_text("\n".join(lines), encoding="utf-8")
     print(f"Registered {len(rows)} existing genuine screenshot files")
 
