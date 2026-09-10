@@ -1,0 +1,15 @@
+{
+  "command": [
+    "git",
+    "ls-files",
+    "--others",
+    "--exclude-standard"
+  ],
+  "workingDirectory": ".",
+  "pythonVersion": "3.12.14",
+  "startedUtc": "2026-09-10T14:33:51.265204+00:00",
+  "finishedUtc": "2026-09-10T14:33:51.440146+00:00",
+  "exitCode": 0,
+  "stdout": ".gitignore\nLICENSE\nREADME.md\nconfig/.gitkeep\ndocs/design/component-design.md\ndocs/design/system-design.md\ndocs/development-plan.md\ndocs/diagrams/README.md\ndocs/diagrams/sitas-high-level-architecture.drawio\ndocs/diagrams/sitas-high-level-architecture.png\ndocs/diagrams/sitas-individual-boundary.drawio\ndocs/diagrams/sitas-individual-boundary.png\ndocs/limitations/assumptions-and-limitations.md\ndocs/methodology/.gitkeep\ndocs/requirements/functional-requirements.md\ndocs/requirements/non-functional-requirements.md\ndocs/testing/.gitkeep\ndocs/threat-model/assets-and-threat-actors.md\ndocs/threat-model/attack-scenarios.md\ndocs/threat-model/threat-model.md\nevidence/01-planning/.gitkeep\nevidence/01-planning/source-review.md\nevidence/02-project-structure/.gitkeep\nevidence/03-environment-model/.gitkeep\nevidence/04-graph-engine/.gitkeep\nevidence/05-pathfinding/.gitkeep\nevidence/06-risk-engine/.gitkeep\nevidence/07-control-simulation/.gitkeep\nevidence/08-testing/.gitkeep\nevidence/09-reporting/.gitkeep\nevidence/10-final-demo/.gitkeep\nevidence/Development-Journal.md\nevidence/Phase-Completion-Register.md\nevidence/Screenshot-Evidence-Register.md\nevidence/logs/.gitkeep\nevidence/logs/phase01-diagram-exports.execution.json\nevidence/logs/phase01-diagram-exports.txt\nevidence/logs/phase01-publication-scan.execution.json\nevidence/logs/phase01-publication-scan.txt\nevidence/logs/phase01-toolchain.execution.json\nevidence/logs/phase01-toolchain.txt\nevidence/screenshots/controls/.gitkeep\nevidence/screenshots/drawio/.gitkeep\nevidence/screenshots/github/.gitkeep\nevidence/screenshots/graph/.gitkeep\nevidence/screenshots/pathfinding/.gitkeep\nevidence/screenshots/planning/.gitkeep\nevidence/screenshots/project-structure/.gitkeep\nevidence/screenshots/reports/.gitkeep\nevidence/screenshots/risk/.gitkeep\nevidence/screenshots/tests/.gitkeep\npytest.ini\nreports/csv/.gitkeep\nreports/html/.gitkeep\nreports/json/.gitkeep\nrequirements-dev-lock.txt\nrequirements.txt\nscenarios/.gitkeep\nscripts/capture_command.py\nscripts/check_publication.py\nscripts/export_diagrams.py\nscripts/record_phase.py\nsrc/.gitkeep\ntests/fixtures/.gitkeep\n",
+  "stderr": ""
+}

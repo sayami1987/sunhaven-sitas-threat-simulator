@@ -1,0 +1,146 @@
+{
+  "phase": 1,
+  "title": "Source review and final design",
+  "recordedUtc": "2026-09-10T14:33:51.848807+00:00",
+  "status": "Completed",
+  "result": "Reviewed supplied materials; defined 24 FRs, 12 NFRs, threat model and architecture; created standalone repository and two editable diagrams with PNG exports.",
+  "notes": "Approved group proposal not supplied. Diagram exports are not screenshots. GitHub repository created; first publication follows review. Student critical review and demonstration remain to be completed separately.",
+  "filesAtRecording": [
+    "?? .gitignore",
+    "?? LICENSE",
+    "?? README.md",
+    "?? config/.gitkeep",
+    "?? docs/design/component-design.md",
+    "?? docs/design/system-design.md",
+    "?? docs/development-plan.md",
+    "?? docs/diagrams/README.md",
+    "?? docs/diagrams/sitas-high-level-architecture.drawio",
+    "?? docs/diagrams/sitas-high-level-architecture.png",
+    "?? docs/diagrams/sitas-individual-boundary.drawio",
+    "?? docs/diagrams/sitas-individual-boundary.png",
+    "?? docs/limitations/assumptions-and-limitations.md",
+    "?? docs/methodology/.gitkeep",
+    "?? docs/requirements/functional-requirements.md",
+    "?? docs/requirements/non-functional-requirements.md",
+    "?? docs/testing/.gitkeep",
+    "?? docs/threat-model/assets-and-threat-actors.md",
+    "?? docs/threat-model/attack-scenarios.md",
+    "?? docs/threat-model/threat-model.md",
+    "?? evidence/01-planning/.gitkeep",
+    "?? evidence/01-planning/source-review.md",
+    "?? evidence/02-project-structure/.gitkeep",
+    "?? evidence/03-environment-model/.gitkeep",
+    "?? evidence/04-graph-engine/.gitkeep",
+    "?? evidence/05-pathfinding/.gitkeep",
+    "?? evidence/06-risk-engine/.gitkeep",
+    "?? evidence/07-control-simulation/.gitkeep",
+    "?? evidence/08-testing/.gitkeep",
+    "?? evidence/09-reporting/.gitkeep",
+    "?? evidence/10-final-demo/.gitkeep",
+    "?? evidence/Development-Journal.md",
+    "?? evidence/Phase-Completion-Register.md",
+    "?? evidence/Screenshot-Evidence-Register.md",
+    "?? evidence/logs/.gitkeep",
+    "?? evidence/logs/phase01-diagram-exports.execution.json",
+    "?? evidence/logs/phase01-diagram-exports.txt",
+    "?? evidence/logs/phase01-folder-tree.execution.json",
+    "?? evidence/logs/phase01-folder-tree.txt",
+    "?? evidence/logs/phase01-publication-scan.execution.json",
+    "?? evidence/logs/phase01-publication-scan.txt",
+    "?? evidence/logs/phase01-toolchain.execution.json",
+    "?? evidence/logs/phase01-toolchain.txt",
+    "?? evidence/screenshots/controls/.gitkeep",
+    "?? evidence/screenshots/drawio/.gitkeep",
+    "?? evidence/screenshots/github/.gitkeep",
+    "?? evidence/screenshots/graph/.gitkeep",
+    "?? evidence/screenshots/pathfinding/.gitkeep",
+    "?? evidence/screenshots/planning/.gitkeep",
+    "?? evidence/screenshots/project-structure/.gitkeep",
+    "?? evidence/screenshots/reports/.gitkeep",
+    "?? evidence/screenshots/risk/.gitkeep",
+    "?? evidence/screenshots/tests/.gitkeep",
+    "?? pytest.ini",
+    "?? reports/csv/.gitkeep",
+    "?? reports/html/.gitkeep",
+    "?? reports/json/.gitkeep",
+    "?? requirements-dev-lock.txt",
+    "?? requirements.txt",
+    "?? scenarios/.gitkeep",
+    "?? scripts/capture_command.py",
+    "?? scripts/check_publication.py",
+    "?? scripts/export_diagrams.py",
+    "?? scripts/record_phase.py",
+    "?? src/.gitkeep",
+    "?? tests/fixtures/.gitkeep"
+  ],
+  "evidence": [
+    {
+      "file": "evidence/logs/phase01-toolchain.txt",
+      "execution": {
+        "command": [
+          "python",
+          "-c",
+          "import sys,pytest,PIL; print('Python',sys.version.split()[0]); print('pytest',pytest.__version__); print('Pillow',PIL.__version__)"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T14:31:11.916455+00:00",
+        "finishedUtc": "2026-09-10T14:31:15.191919+00:00",
+        "exitCode": 0,
+        "stdout": "Python 3.12.14\npytest 8.4.2\nPillow 12.3.0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "evidence/logs/phase01-diagram-exports.txt",
+      "execution": {
+        "command": [
+          "python",
+          "scripts/export_diagrams.py"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T14:33:49.157754+00:00",
+        "finishedUtc": "2026-09-10T14:33:50.842555+00:00",
+        "exitCode": 0,
+        "stdout": "Exported C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\docs\\diagrams\\sitas-high-level-architecture.png (2640 x 1500) from sitas-high-level-architecture.drawio\nExported C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\docs\\diagrams\\sitas-individual-boundary.png (2640 x 1560) from sitas-individual-boundary.drawio\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "evidence/logs/phase01-folder-tree.txt",
+      "execution": {
+        "command": [
+          "git",
+          "ls-files",
+          "--others",
+          "--exclude-standard"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T14:33:51.265204+00:00",
+        "finishedUtc": "2026-09-10T14:33:51.440146+00:00",
+        "exitCode": 0,
+        "stdout": ".gitignore\nLICENSE\nREADME.md\nconfig/.gitkeep\ndocs/design/component-design.md\ndocs/design/system-design.md\ndocs/development-plan.md\ndocs/diagrams/README.md\ndocs/diagrams/sitas-high-level-architecture.drawio\ndocs/diagrams/sitas-high-level-architecture.png\ndocs/diagrams/sitas-individual-boundary.drawio\ndocs/diagrams/sitas-individual-boundary.png\ndocs/limitations/assumptions-and-limitations.md\ndocs/methodology/.gitkeep\ndocs/requirements/functional-requirements.md\ndocs/requirements/non-functional-requirements.md\ndocs/testing/.gitkeep\ndocs/threat-model/assets-and-threat-actors.md\ndocs/threat-model/attack-scenarios.md\ndocs/threat-model/threat-model.md\nevidence/01-planning/.gitkeep\nevidence/01-planning/source-review.md\nevidence/02-project-structure/.gitkeep\nevidence/03-environment-model/.gitkeep\nevidence/04-graph-engine/.gitkeep\nevidence/05-pathfinding/.gitkeep\nevidence/06-risk-engine/.gitkeep\nevidence/07-control-simulation/.gitkeep\nevidence/08-testing/.gitkeep\nevidence/09-reporting/.gitkeep\nevidence/10-final-demo/.gitkeep\nevidence/Development-Journal.md\nevidence/Phase-Completion-Register.md\nevidence/Screenshot-Evidence-Register.md\nevidence/logs/.gitkeep\nevidence/logs/phase01-diagram-exports.execution.json\nevidence/logs/phase01-diagram-exports.txt\nevidence/logs/phase01-publication-scan.execution.json\nevidence/logs/phase01-publication-scan.txt\nevidence/logs/phase01-toolchain.execution.json\nevidence/logs/phase01-toolchain.txt\nevidence/screenshots/controls/.gitkeep\nevidence/screenshots/drawio/.gitkeep\nevidence/screenshots/github/.gitkeep\nevidence/screenshots/graph/.gitkeep\nevidence/screenshots/pathfinding/.gitkeep\nevidence/screenshots/planning/.gitkeep\nevidence/screenshots/project-structure/.gitkeep\nevidence/screenshots/reports/.gitkeep\nevidence/screenshots/risk/.gitkeep\nevidence/screenshots/tests/.gitkeep\npytest.ini\nreports/csv/.gitkeep\nreports/html/.gitkeep\nreports/json/.gitkeep\nrequirements-dev-lock.txt\nrequirements.txt\nscenarios/.gitkeep\nscripts/capture_command.py\nscripts/check_publication.py\nscripts/export_diagrams.py\nscripts/record_phase.py\nsrc/.gitkeep\ntests/fixtures/.gitkeep\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "evidence/logs/phase01-publication-scan.txt",
+      "execution": {
+        "command": [
+          "python",
+          "scripts/check_publication.py"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T14:33:04.300070+00:00",
+        "finishedUtc": "2026-09-10T14:33:04.835692+00:00",
+        "exitCode": 0,
+        "stdout": "Publication pattern scan: 59 files; 0 flagged files/patterns\nScope: Git-visible current files. Pattern checks supplement source and screenshot review; they do not prove absence of every possible secret.\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "commit": null
+}

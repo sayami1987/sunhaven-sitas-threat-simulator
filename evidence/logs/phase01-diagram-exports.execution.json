@@ -1,0 +1,13 @@
+{
+  "command": [
+    "python",
+    "scripts/export_diagrams.py"
+  ],
+  "workingDirectory": ".",
+  "pythonVersion": "3.12.14",
+  "startedUtc": "2026-09-10T14:33:49.157754+00:00",
+  "finishedUtc": "2026-09-10T14:33:50.842555+00:00",
+  "exitCode": 0,
+  "stdout": "Exported C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\docs\\diagrams\\sitas-high-level-architecture.png (2640 x 1500) from sitas-high-level-architecture.drawio\nExported C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\docs\\diagrams\\sitas-individual-boundary.png (2640 x 1560) from sitas-individual-boundary.drawio\n",
+  "stderr": ""
+}

@@ -1,0 +1,4 @@
+# The simulator runtime uses Python's standard library only.
+# Development and diagram export dependencies:
+pytest>=8.3,<9
+Pillow>=11,<13

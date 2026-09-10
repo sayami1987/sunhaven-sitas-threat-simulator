@@ -1,0 +1,9 @@
+Started UTC: 2026-09-10T14:33:04.300070+00:00
+Command: ["python", "scripts/check_publication.py"]
+Exit code: 0
+
+STDOUT
+Publication pattern scan: 59 files; 0 flagged files/patterns
+Scope: Git-visible current files. Pattern checks supplement source and screenshot review; they do not prove absence of every possible secret.
+
+STDERR

@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device" compressed="false" version="24.7.17">
+  <diagram id="SITAS standalone scope" name="SITAS standalone scope">
+    <mxGraphModel dx="1760" dy="1040" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1760" pageHeight="1040" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="SITAS standalone scope" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=36;fontStyle=1;fontColor=#17243B;align=left;" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="1640" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Internal modules, synthetic inputs and generated outputs" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=22;fontStyle=0;fontColor=#556B83;align=left;" vertex="1" parent="1">
+          <mxGeometry x="60" y="118" width="1640" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="sitas-boundary" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;fillColor=#F6F9FC;strokeColor=#668CAC;strokeWidth=2;background=1;" vertex="1" parent="1">
+          <mxGeometry x="415" y="200" width="925" height="660" as="geometry" />
+        </mxCell>
+        <mxCell id="boundary-title" value="SITAS APPLICATION" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=25;fontStyle=1;fontColor=#264967;align=center;" vertex="1" parent="1">
+          <mxGeometry x="455" y="218" width="845" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="loading" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;fillColor=#FFFFFF;strokeColor=#B9C9DB;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="455" y="300" width="400" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="loading-title" value="Data loading + validation" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=22;fontStyle=1;fontColor=#17243B;align=center;" vertex="1" parent="1">
+          <mxGeometry x="471" y="313" width="368" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="loading-body" value="Parse files and validate schema" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=20;fontStyle=0;fontColor=#475B73;align=center;" vertex="1" parent="1">
+          <mxGeometry x="472" y="363" width="366" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="graph" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;fillColor=#FFFFFF;strokeColor=#B9C9DB;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="900" y="300" width="400" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="graph-title" value="Directed graph model" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=22;fontStyle=1;fontColor=#17243B;align=center;" vertex="1" parent="1">
+          <mxGeometry x="916" y="313" width="368" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="graph-body" value="Represent assets and attack edges" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=20;fontStyle=0;fontColor=#475B73;align=center;" vertex="1" parent="1">
+          <mxGeometry x="917" y="363" width="366" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="dfs" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;fillColor=#FFFFFF;strokeColor=#B9C9DB;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="455" y="455" width="400" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="dfs-title" value="Iterative DFS" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=22;fontStyle=1;fontColor=#17243B;align=center;" vertex="1" parent="1">
+          <mxGeometry x="471" y="468" width="368" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="dfs-body" value="Find paths within configured limits" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=20;fontStyle=0;fontColor=#475B73;align=center;" vertex="1" parent="1">
+          <mxGeometry x="472" y="518" width="366" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="risk" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;fillColor=#FFFFFF;strokeColor=#B9C9DB;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="900" y="455" width="400" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="risk-title" value="Risk scoring" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=22;fontStyle=1;fontColor=#17243B;align=center;" vertex="1" parent="1">
+          <mxGeometry x="916" y="468" width="368" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="risk-body" value="Calculate baseline and residual risk" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=20;fontStyle=0;fontColor=#475B73;align=center;" vertex="1" parent="1">
+          <mxGeometry x="917" y="518" width="366" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="simulation" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;fillColor=#E9F4F4;strokeColor=#298C8C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="455" y="610" width="400" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="simulation-title" value="Control simulation" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=22;fontStyle=1;fontColor=#17243B;align=center;" vertex="1" parent="1">
+          <mxGeometry x="471" y="623" width="368" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="simulation-body" value="Apply synthetic control effects" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=20;fontStyle=0;fontColor=#475B73;align=center;" vertex="1" parent="1">
+          <mxGeometry x="472" y="673" width="366" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="comparison" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;fillColor=#E9F4F4;strokeColor=#298C8C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="900" y="610" width="400" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="comparison-title" value="Result comparison" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=22;fontStyle=1;fontColor=#17243B;align=center;" vertex="1" parent="1">
+          <mxGeometry x="916" y="623" width="368" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="comparison-body" value="Calculate risk and path differences" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;text=1;fillColor=none;strokeColor=none;spacing=0;fontSize=20;fontStyle=0;fontColor=#475B73;align=center;" vertex="1" parent="1">
+          <mxGeometry x="917" y="673" width="366" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="reporting" value="Report generation: JSON, CSV and HTML" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;fillColor=#E9F4F4;strokeColor=#298C8C;fontSize=22;fontStyle=1;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="455" y="775" width="845" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="synthetic-inputs" value="SYNTHETIC INPUTS&#10;&#10;Environment &amp; assets&#10;Scenarios&#10;Control definitions&#10;Risk parameters" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;fillColor=#EDF2FB;strokeColor=#ADBFE0;fontSize=22;spacing=18;" vertex="1" parent="1">
+          <mxGeometry x="55" y="345" width="300" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="generated-outputs" value="GENERATED OUTPUTS&#10;&#10;JSON results&#10;CSV comparison&#10;HTML report" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;fillColor=#F0F8F4;strokeColor=#97C1AA;fontSize=22;spacing=18;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="380" width="300" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="inputs-to-app" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=0;strokeColor=#667C95;strokeWidth=2.3;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.485;" edge="1" parent="1" source="synthetic-inputs" target="sitas-boundary">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app-to-outputs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=0;strokeColor=#667C95;strokeWidth=2.3;endArrow=block;endFill=1;exitX=1;exitY=0.485;entryX=0;entryY=0.5;" edge="1" parent="1" source="sitas-boundary" target="generated-outputs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="scope-constraints" value="LOCAL, OFFLINE EXECUTION&#10;Synthetic data only  |  No credentials  |  No external service calls" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#17243B;fontFamily=Segoe UI;fontSize=21;spacing=12;fillColor=#F8FAFC;strokeColor=#D6E0EA;fontSize=20;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="415" y="907" width="925" height="95" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
