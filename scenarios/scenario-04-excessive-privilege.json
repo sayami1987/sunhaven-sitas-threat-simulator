@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "scenario_04",
+  "title": "Excessive staff privilege",
+  "description": "A valid worker identity reaches payroll through an excessive role; normal identity access is a precondition, and the excessive entitlement is the defect.",
+  "source": "actor_internal",
+  "target": "asset_payroll_records",
+  "edge_ids": [
+    "edge_internal_worker_identity",
+    "edge_worker_excessive_role",
+    "edge_excessive_admin_console",
+    "edge_admin_payroll_access"
+  ],
+  "recommendation": "Enforce job-appropriate RBAC and require reauthentication for privileged operations."
+}

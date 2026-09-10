@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python",
+    "scripts/run_scenarios.py",
+    "--json",
+    "evidence/07-control-simulation/scenario-results.json"
+  ],
+  "workingDirectory": ".",
+  "pythonVersion": "3.12.14",
+  "startedUtc": "2026-09-10T15:01:09.226127+00:00",
+  "finishedUtc": "2026-09-10T15:01:09.428186+00:00",
+  "exitCode": 0,
+  "stdout": "Scenario | Baseline | Blocked | Remaining | Reduced | Unchanged\nscenario_01 | 1 | 1 | 0 | 0 | 0\nscenario_02 | 2 | 2 | 0 | 0 | 0\nscenario_03 | 1 | 1 | 0 | 0 | 0\nscenario_04 | 1 | 1 | 0 | 0 | 0\nscenario_05 | 2 | 2 | 0 | 0 | 0\nscenario_06 | 1 | 0 | 1 | 1 | 0\nscenario_07 | 2 | 2 | 0 | 0 | 0\nscenario_08 | 2 | 1 | 1 | 0 | 1\nscenario_09 | 1 | 1 | 0 | 0 | 0\nscenario_10 | 2 | 1 | 1 | 1 | 0\n{\n  \"baselinePaths\": 15,\n  \"blockedPaths\": 12,\n  \"remainingPaths\": 3,\n  \"reducedPaths\": 2,\n  \"unchangedPaths\": 1,\n  \"baselineExposure\": 228,\n  \"residualExposure\": 27,\n  \"exposureReductionPercent\": 88.16,\n  \"baselineSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 2,\n    \"High\": 9,\n    \"Critical\": 4\n  },\n  \"remainingSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 2,\n    \"High\": 1,\n    \"Critical\": 0\n  }\n}\nSaved actual scenario results: evidence\\07-control-simulation\\scenario-results.json\nSynthetic scenario-path records; shared relationships are not independent real-world incidents.\n",
+  "stderr": ""
+}

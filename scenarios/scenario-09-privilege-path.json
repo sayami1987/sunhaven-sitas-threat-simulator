@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "scenario_09",
+  "title": "Incorrect agency privilege assignment",
+  "description": "A valid agency identity receives a clinical role by mistake; RBAC removes this excessive assignment, while privileged reauthentication can reduce the operation likelihood.",
+  "source": "actor_internal",
+  "target": "asset_medication_records",
+  "edge_ids": [
+    "edge_internal_agency_identity",
+    "edge_agency_misassigned_role",
+    "edge_wrong_role_medication",
+    "edge_medication_records_access"
+  ],
+  "recommendation": "Correct the erroneous role assignment and recheck least-privilege access for agency identities."
+}

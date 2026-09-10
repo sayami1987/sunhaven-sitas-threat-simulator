@@ -1,0 +1,1545 @@
+{
+  "environmentId": "sunhaven_synthetic_environment",
+  "selectedControls": [
+    "account_disablement",
+    "admin_restriction",
+    "device_session_separation",
+    "individual_accounts",
+    "mfa",
+    "privileged_reauthentication",
+    "rbac",
+    "session_revocation",
+    "session_timeout"
+  ],
+  "summary": {
+    "baselinePaths": 15,
+    "blockedPaths": 12,
+    "remainingPaths": 3,
+    "reducedPaths": 2,
+    "unchangedPaths": 1,
+    "baselineExposure": 228,
+    "residualExposure": 27,
+    "exposureReductionPercent": 88.16,
+    "baselineSeverity": {
+      "Low": 0,
+      "Medium": 2,
+      "High": 9,
+      "Critical": 4
+    },
+    "remainingSeverity": {
+      "Low": 0,
+      "Medium": 2,
+      "High": 1,
+      "Critical": 0
+    }
+  },
+  "scenarios": [
+    {
+      "scenarioId": "scenario_01",
+      "title": "Stolen worker password",
+      "description": "One password-only route to synthetic care records; designed for an MFA-blocked comparison.",
+      "sourceNode": "attacker_external",
+      "targetNode": "asset_care_records",
+      "edgeIds": [
+        "edge_care_records_access",
+        "edge_worker_care_portal",
+        "edge_worker_password_acquired",
+        "edge_worker_password_login"
+      ],
+      "summary": {
+        "baselinePaths": 1,
+        "blockedPaths": 1,
+        "remainingPaths": 0,
+        "reducedPaths": 0,
+        "unchangedPaths": 0,
+        "baselineExposure": 20,
+        "residualExposure": 0,
+        "exposureReductionPercent": 100.0,
+        "baselineSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 0,
+          "Critical": 1
+        },
+        "remainingSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 0,
+          "Critical": 0
+        }
+      },
+      "findings": [
+        {
+          "findingId": "SITAS-F-4172d5ddb137866d",
+          "pathId": "SITAS-AP-45aae794966a46d6",
+          "scenarioId": "scenario_01",
+          "title": "Stolen worker password",
+          "sourceNode": "attacker_external",
+          "targetNode": "asset_care_records",
+          "orderedPath": [
+            "attacker_external",
+            "credential_worker",
+            "identity_worker",
+            "app_care",
+            "asset_care_records"
+          ],
+          "orderedEdges": [
+            "edge_worker_password_acquired",
+            "edge_worker_password_login",
+            "edge_worker_care_portal",
+            "edge_care_records_access"
+          ],
+          "pathLength": 4,
+          "likelihood": 4,
+          "impact": 5,
+          "riskScore": 20,
+          "severity": "Critical",
+          "baseline": {
+            "likelihood": 4,
+            "impact": 5,
+            "riskScore": 20,
+            "severity": "Critical"
+          },
+          "residual": null,
+          "controlsRelevant": [
+            "mfa"
+          ],
+          "controlsApplied": [
+            "mfa"
+          ],
+          "blocked": true,
+          "blockedAt": [
+            "edge_worker_password_login"
+          ],
+          "outcome": "blocked",
+          "controlEffects": [
+            {
+              "edgeId": "edge_worker_password_login",
+              "controlId": "mfa",
+              "ruleId": "mfa_block_password_only",
+              "action": "block",
+              "reason": "Require an additional authentication factor for a password-only transition.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            }
+          ],
+          "explanation": "The simulated path is blocked at edge_worker_password_login. mfa/mfa_block_password_only at edge_worker_password_login: Require an additional authentication factor for a password-only transition.",
+          "recommendation": "Apply MFA to password-based access and verify that password-only transitions are removed."
+        }
+      ],
+      "search": {
+        "baseline": {
+          "expansions": 4,
+          "depthPruned": 0
+        },
+        "controlled": {
+          "expansions": 1,
+          "depthPruned": 0
+        }
+      }
+    },
+    {
+      "scenarioId": "scenario_02",
+      "title": "Shared workstation session exposure",
+      "description": "Two explicit alternatives: a stale shared session and a fresh shared session. Timeout matches only the stale route; individual-account enforcement matches both shared-identity routes.",
+      "sourceNode": "actor_local",
+      "targetNode": "asset_medication_records",
+      "edgeIds": [
+        "edge_fresh_shared_identity",
+        "edge_local_shared_workstation",
+        "edge_medication_records_access",
+        "edge_shared_medication_access",
+        "edge_stale_shared_identity",
+        "edge_workstation_fresh_session",
+        "edge_workstation_stale_session"
+      ],
+      "summary": {
+        "baselinePaths": 2,
+        "blockedPaths": 2,
+        "remainingPaths": 0,
+        "reducedPaths": 0,
+        "unchangedPaths": 0,
+        "baselineExposure": 28,
+        "residualExposure": 0,
+        "exposureReductionPercent": 100.0,
+        "baselineSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 2,
+          "Critical": 0
+        },
+        "remainingSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 0,
+          "Critical": 0
+        }
+      },
+      "findings": [
+        {
+          "findingId": "SITAS-F-4f7279589bd5e119",
+          "pathId": "SITAS-AP-4b4e406f3b7d682a",
+          "scenarioId": "scenario_02",
+          "title": "Shared workstation session exposure",
+          "sourceNode": "actor_local",
+          "targetNode": "asset_medication_records",
+          "orderedPath": [
+            "actor_local",
+            "workstation_shared",
+            "session_stale",
+            "identity_shared",
+            "app_medication",
+            "asset_medication_records"
+          ],
+          "orderedEdges": [
+            "edge_local_shared_workstation",
+            "edge_workstation_stale_session",
+            "edge_stale_shared_identity",
+            "edge_shared_medication_access",
+            "edge_medication_records_access"
+          ],
+          "pathLength": 5,
+          "likelihood": 4,
+          "impact": 4,
+          "riskScore": 16,
+          "severity": "High",
+          "baseline": {
+            "likelihood": 4,
+            "impact": 4,
+            "riskScore": 16,
+            "severity": "High"
+          },
+          "residual": null,
+          "controlsRelevant": [
+            "individual_accounts",
+            "session_timeout"
+          ],
+          "controlsApplied": [
+            "individual_accounts",
+            "session_timeout"
+          ],
+          "blocked": true,
+          "blockedAt": [
+            "edge_workstation_stale_session",
+            "edge_stale_shared_identity"
+          ],
+          "outcome": "blocked",
+          "controlEffects": [
+            {
+              "edgeId": "edge_stale_shared_identity",
+              "controlId": "individual_accounts",
+              "ruleId": "remove_shared_account",
+              "action": "block",
+              "reason": "Replace shared-account access with individual identities, removing this modelled shared-account transition.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            },
+            {
+              "edgeId": "edge_workstation_stale_session",
+              "controlId": "session_timeout",
+              "ruleId": "timeout_idle_session",
+              "action": "block",
+              "reason": "Expire a stale idle session; the rule does not match active-session tags.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            }
+          ],
+          "explanation": "The simulated path is blocked at edge_workstation_stale_session, edge_stale_shared_identity. individual_accounts/remove_shared_account at edge_stale_shared_identity: Replace shared-account access with individual identities, removing this modelled shared-account transition. session_timeout/timeout_idle_session at edge_workstation_stale_session: Expire a stale idle session; the rule does not match active-session tags.",
+          "recommendation": "Combine idle timeout with individual accounts; freshly active shared sessions remain after timeout alone."
+        },
+        {
+          "findingId": "SITAS-F-de0ddfd36acd7c33",
+          "pathId": "SITAS-AP-02d979b00e6606d8",
+          "scenarioId": "scenario_02",
+          "title": "Shared workstation session exposure",
+          "sourceNode": "actor_local",
+          "targetNode": "asset_medication_records",
+          "orderedPath": [
+            "actor_local",
+            "workstation_shared",
+            "session_fresh",
+            "identity_shared",
+            "app_medication",
+            "asset_medication_records"
+          ],
+          "orderedEdges": [
+            "edge_local_shared_workstation",
+            "edge_workstation_fresh_session",
+            "edge_fresh_shared_identity",
+            "edge_shared_medication_access",
+            "edge_medication_records_access"
+          ],
+          "pathLength": 5,
+          "likelihood": 3,
+          "impact": 4,
+          "riskScore": 12,
+          "severity": "High",
+          "baseline": {
+            "likelihood": 3,
+            "impact": 4,
+            "riskScore": 12,
+            "severity": "High"
+          },
+          "residual": null,
+          "controlsRelevant": [
+            "individual_accounts"
+          ],
+          "controlsApplied": [
+            "individual_accounts"
+          ],
+          "blocked": true,
+          "blockedAt": [
+            "edge_fresh_shared_identity"
+          ],
+          "outcome": "blocked",
+          "controlEffects": [
+            {
+              "edgeId": "edge_fresh_shared_identity",
+              "controlId": "individual_accounts",
+              "ruleId": "remove_shared_account",
+              "action": "block",
+              "reason": "Replace shared-account access with individual identities, removing this modelled shared-account transition.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            }
+          ],
+          "explanation": "The simulated path is blocked at edge_fresh_shared_identity. individual_accounts/remove_shared_account at edge_fresh_shared_identity: Replace shared-account access with individual identities, removing this modelled shared-account transition.",
+          "recommendation": "Combine idle timeout with individual accounts; freshly active shared sessions remain after timeout alone."
+        }
+      ],
+      "search": {
+        "baseline": {
+          "expansions": 9,
+          "depthPruned": 0
+        },
+        "controlled": {
+          "expansions": 2,
+          "depthPruned": 0
+        }
+      }
+    },
+    {
+      "scenarioId": "scenario_03",
+      "title": "Former worker identity remains enabled",
+      "description": "A stale but still enabled fictional identity retains medication-application access; designed to exercise account disablement.",
+      "sourceNode": "attacker_external",
+      "targetNode": "asset_medication_records",
+      "edgeIds": [
+        "edge_former_identity_reuse",
+        "edge_former_medication_access",
+        "edge_medication_records_access"
+      ],
+      "summary": {
+        "baselinePaths": 1,
+        "blockedPaths": 1,
+        "remainingPaths": 0,
+        "reducedPaths": 0,
+        "unchangedPaths": 0,
+        "baselineExposure": 16,
+        "residualExposure": 0,
+        "exposureReductionPercent": 100.0,
+        "baselineSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 1,
+          "Critical": 0
+        },
+        "remainingSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 0,
+          "Critical": 0
+        }
+      },
+      "findings": [
+        {
+          "findingId": "SITAS-F-440d60d42c55ef14",
+          "pathId": "SITAS-AP-71b8835d5c822174",
+          "scenarioId": "scenario_03",
+          "title": "Former worker identity remains enabled",
+          "sourceNode": "attacker_external",
+          "targetNode": "asset_medication_records",
+          "orderedPath": [
+            "attacker_external",
+            "identity_former",
+            "app_medication",
+            "asset_medication_records"
+          ],
+          "orderedEdges": [
+            "edge_former_identity_reuse",
+            "edge_former_medication_access",
+            "edge_medication_records_access"
+          ],
+          "pathLength": 3,
+          "likelihood": 4,
+          "impact": 4,
+          "riskScore": 16,
+          "severity": "High",
+          "baseline": {
+            "likelihood": 4,
+            "impact": 4,
+            "riskScore": 16,
+            "severity": "High"
+          },
+          "residual": null,
+          "controlsRelevant": [
+            "account_disablement"
+          ],
+          "controlsApplied": [
+            "account_disablement"
+          ],
+          "blocked": true,
+          "blockedAt": [
+            "edge_former_identity_reuse"
+          ],
+          "outcome": "blocked",
+          "controlEffects": [
+            {
+              "edgeId": "edge_former_identity_reuse",
+              "controlId": "account_disablement",
+              "ruleId": "disable_stale_identity",
+              "action": "block",
+              "reason": "Disable a former worker identity that should no longer be active.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            }
+          ],
+          "explanation": "The simulated path is blocked at edge_former_identity_reuse. account_disablement/disable_stale_identity at edge_former_identity_reuse: Disable a former worker identity that should no longer be active.",
+          "recommendation": "Disable former worker identities promptly and review retained entitlements."
+        }
+      ],
+      "search": {
+        "baseline": {
+          "expansions": 3,
+          "depthPruned": 0
+        },
+        "controlled": {
+          "expansions": 0,
+          "depthPruned": 0
+        }
+      }
+    },
+    {
+      "scenarioId": "scenario_04",
+      "title": "Excessive staff privilege",
+      "description": "A valid worker identity reaches payroll through an excessive role; normal identity access is a precondition, and the excessive entitlement is the defect.",
+      "sourceNode": "actor_internal",
+      "targetNode": "asset_payroll_records",
+      "edgeIds": [
+        "edge_admin_payroll_access",
+        "edge_excessive_admin_console",
+        "edge_internal_worker_identity",
+        "edge_worker_excessive_role"
+      ],
+      "summary": {
+        "baselinePaths": 1,
+        "blockedPaths": 1,
+        "remainingPaths": 0,
+        "reducedPaths": 0,
+        "unchangedPaths": 0,
+        "baselineExposure": 20,
+        "residualExposure": 0,
+        "exposureReductionPercent": 100.0,
+        "baselineSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 0,
+          "Critical": 1
+        },
+        "remainingSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 0,
+          "Critical": 0
+        }
+      },
+      "findings": [
+        {
+          "findingId": "SITAS-F-3ed2805e613d8acd",
+          "pathId": "SITAS-AP-c8453ccbc4b8cf97",
+          "scenarioId": "scenario_04",
+          "title": "Excessive staff privilege",
+          "sourceNode": "actor_internal",
+          "targetNode": "asset_payroll_records",
+          "orderedPath": [
+            "actor_internal",
+            "identity_worker",
+            "privilege_excessive",
+            "app_admin",
+            "asset_payroll_records"
+          ],
+          "orderedEdges": [
+            "edge_internal_worker_identity",
+            "edge_worker_excessive_role",
+            "edge_excessive_admin_console",
+            "edge_admin_payroll_access"
+          ],
+          "pathLength": 4,
+          "likelihood": 4,
+          "impact": 5,
+          "riskScore": 20,
+          "severity": "Critical",
+          "baseline": {
+            "likelihood": 4,
+            "impact": 5,
+            "riskScore": 20,
+            "severity": "Critical"
+          },
+          "residual": null,
+          "controlsRelevant": [
+            "privileged_reauthentication",
+            "rbac"
+          ],
+          "controlsApplied": [
+            "privileged_reauthentication",
+            "rbac"
+          ],
+          "blocked": true,
+          "blockedAt": [
+            "edge_worker_excessive_role"
+          ],
+          "outcome": "blocked",
+          "controlEffects": [
+            {
+              "edgeId": "edge_excessive_admin_console",
+              "controlId": "privileged_reauthentication",
+              "ruleId": "reauthenticate_privileged_operation",
+              "action": "cap",
+              "reason": "A fresh authentication requirement reduces the modelled likelihood of the privileged operation.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": 2
+            },
+            {
+              "edgeId": "edge_worker_excessive_role",
+              "controlId": "rbac",
+              "ruleId": "rbac_remove_excessive_role",
+              "action": "block",
+              "reason": "Remove excessive or incorrectly assigned privileges from the synthetic identity.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            }
+          ],
+          "explanation": "The simulated path is blocked at edge_worker_excessive_role. privileged_reauthentication/reauthenticate_privileged_operation at edge_excessive_admin_console: A fresh authentication requirement reduces the modelled likelihood of the privileged operation. rbac/rbac_remove_excessive_role at edge_worker_excessive_role: Remove excessive or incorrectly assigned privileges from the synthetic identity.",
+          "recommendation": "Enforce job-appropriate RBAC and require reauthentication for privileged operations."
+        }
+      ],
+      "search": {
+        "baseline": {
+          "expansions": 4,
+          "depthPruned": 0
+        },
+        "controlled": {
+          "expansions": 1,
+          "depthPruned": 0
+        }
+      }
+    },
+    {
+      "scenarioId": "scenario_05",
+      "title": "Administrator password theft with active-session alternative",
+      "description": "Two alternatives: a stolen administrator-password reference and an already authenticated administrator session. MFA blocks only the password route; session revocation addresses the active-session alternative.",
+      "sourceNode": "attacker_external",
+      "targetNode": "asset_identity_store",
+      "edgeIds": [
+        "edge_admin_password_acquired",
+        "edge_admin_password_login",
+        "edge_admin_session_console",
+        "edge_admin_unrestricted_role",
+        "edge_console_identity_store",
+        "edge_stolen_admin_session",
+        "edge_unrestricted_admin_console"
+      ],
+      "summary": {
+        "baselinePaths": 2,
+        "blockedPaths": 2,
+        "remainingPaths": 0,
+        "reducedPaths": 0,
+        "unchangedPaths": 0,
+        "baselineExposure": 35,
+        "residualExposure": 0,
+        "exposureReductionPercent": 100.0,
+        "baselineSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 1,
+          "Critical": 1
+        },
+        "remainingSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 0,
+          "Critical": 0
+        }
+      },
+      "findings": [
+        {
+          "findingId": "SITAS-F-94ad8296f2bb911f",
+          "pathId": "SITAS-AP-d3e90be67bacef1a",
+          "scenarioId": "scenario_05",
+          "title": "Administrator password theft with active-session alternative",
+          "sourceNode": "attacker_external",
+          "targetNode": "asset_identity_store",
+          "orderedPath": [
+            "attacker_external",
+            "credential_admin",
+            "identity_admin",
+            "privilege_unrestricted_admin",
+            "app_admin",
+            "asset_identity_store"
+          ],
+          "orderedEdges": [
+            "edge_admin_password_acquired",
+            "edge_admin_password_login",
+            "edge_admin_unrestricted_role",
+            "edge_unrestricted_admin_console",
+            "edge_console_identity_store"
+          ],
+          "pathLength": 5,
+          "likelihood": 4,
+          "impact": 5,
+          "riskScore": 20,
+          "severity": "Critical",
+          "baseline": {
+            "likelihood": 4,
+            "impact": 5,
+            "riskScore": 20,
+            "severity": "Critical"
+          },
+          "residual": null,
+          "controlsRelevant": [
+            "admin_restriction",
+            "mfa",
+            "privileged_reauthentication"
+          ],
+          "controlsApplied": [
+            "admin_restriction",
+            "mfa",
+            "privileged_reauthentication"
+          ],
+          "blocked": true,
+          "blockedAt": [
+            "edge_admin_password_login",
+            "edge_admin_unrestricted_role"
+          ],
+          "outcome": "blocked",
+          "controlEffects": [
+            {
+              "edgeId": "edge_admin_password_login",
+              "controlId": "mfa",
+              "ruleId": "mfa_block_password_only",
+              "action": "block",
+              "reason": "Require an additional authentication factor for a password-only transition.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            },
+            {
+              "edgeId": "edge_admin_unrestricted_role",
+              "controlId": "admin_restriction",
+              "ruleId": "restrict_unrestricted_admin",
+              "action": "block",
+              "reason": "Remove unrestricted administrator authority from this synthetic transition.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            },
+            {
+              "edgeId": "edge_console_identity_store",
+              "controlId": "privileged_reauthentication",
+              "ruleId": "reauthenticate_privileged_operation",
+              "action": "cap",
+              "reason": "A fresh authentication requirement reduces the modelled likelihood of the privileged operation.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": 2
+            },
+            {
+              "edgeId": "edge_unrestricted_admin_console",
+              "controlId": "privileged_reauthentication",
+              "ruleId": "reauthenticate_privileged_operation",
+              "action": "cap",
+              "reason": "A fresh authentication requirement reduces the modelled likelihood of the privileged operation.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": 2
+            }
+          ],
+          "explanation": "The simulated path is blocked at edge_admin_password_login, edge_admin_unrestricted_role. mfa/mfa_block_password_only at edge_admin_password_login: Require an additional authentication factor for a password-only transition. admin_restriction/restrict_unrestricted_admin at edge_admin_unrestricted_role: Remove unrestricted administrator authority from this synthetic transition. privileged_reauthentication/reauthenticate_privileged_operation at edge_console_identity_store: A fresh authentication requirement reduces the modelled likelihood of the privileged operation. privileged_reauthentication/reauthenticate_privileged_operation at edge_unrestricted_admin_console: A fresh authentication requirement reduces the modelled likelihood of the privileged operation.",
+          "recommendation": "Combine MFA, administrator restriction, session revocation and privileged reauthentication; test the authenticated-session alternative explicitly."
+        },
+        {
+          "findingId": "SITAS-F-5058b50ebca384db",
+          "pathId": "SITAS-AP-0207711919ba3544",
+          "scenarioId": "scenario_05",
+          "title": "Administrator password theft with active-session alternative",
+          "sourceNode": "attacker_external",
+          "targetNode": "asset_identity_store",
+          "orderedPath": [
+            "attacker_external",
+            "session_admin",
+            "app_admin",
+            "asset_identity_store"
+          ],
+          "orderedEdges": [
+            "edge_stolen_admin_session",
+            "edge_admin_session_console",
+            "edge_console_identity_store"
+          ],
+          "pathLength": 3,
+          "likelihood": 3,
+          "impact": 5,
+          "riskScore": 15,
+          "severity": "High",
+          "baseline": {
+            "likelihood": 3,
+            "impact": 5,
+            "riskScore": 15,
+            "severity": "High"
+          },
+          "residual": null,
+          "controlsRelevant": [
+            "privileged_reauthentication",
+            "session_revocation"
+          ],
+          "controlsApplied": [
+            "privileged_reauthentication",
+            "session_revocation"
+          ],
+          "blocked": true,
+          "blockedAt": [
+            "edge_stolen_admin_session",
+            "edge_admin_session_console"
+          ],
+          "outcome": "blocked",
+          "controlEffects": [
+            {
+              "edgeId": "edge_admin_session_console",
+              "controlId": "session_revocation",
+              "ruleId": "revoke_session_token",
+              "action": "block",
+              "reason": "Invalidate the referenced authenticated session so token reuse no longer provides a route.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            },
+            {
+              "edgeId": "edge_console_identity_store",
+              "controlId": "privileged_reauthentication",
+              "ruleId": "reauthenticate_privileged_operation",
+              "action": "cap",
+              "reason": "A fresh authentication requirement reduces the modelled likelihood of the privileged operation.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": 2
+            },
+            {
+              "edgeId": "edge_stolen_admin_session",
+              "controlId": "session_revocation",
+              "ruleId": "revoke_session_token",
+              "action": "block",
+              "reason": "Invalidate the referenced authenticated session so token reuse no longer provides a route.",
+              "beforeLikelihood": 3,
+              "afterLikelihood": null
+            }
+          ],
+          "explanation": "The simulated path is blocked at edge_stolen_admin_session, edge_admin_session_console. session_revocation/revoke_session_token at edge_admin_session_console: Invalidate the referenced authenticated session so token reuse no longer provides a route. privileged_reauthentication/reauthenticate_privileged_operation at edge_console_identity_store: A fresh authentication requirement reduces the modelled likelihood of the privileged operation. session_revocation/revoke_session_token at edge_stolen_admin_session: Invalidate the referenced authenticated session so token reuse no longer provides a route.",
+          "recommendation": "Combine MFA, administrator restriction, session revocation and privileged reauthentication; test the authenticated-session alternative explicitly."
+        }
+      ],
+      "search": {
+        "baseline": {
+          "expansions": 8,
+          "depthPruned": 0
+        },
+        "controlled": {
+          "expansions": 1,
+          "depthPruned": 0
+        }
+      }
+    },
+    {
+      "scenarioId": "scenario_06",
+      "title": "MFA social-engineering approval",
+      "description": "Assume a fictional user approves an attacker-initiated MFA event. The MFA control caps this human-mediated route to ordinal likelihood 2, while no session-token or password-only route is assumed.",
+      "sourceNode": "attacker_external",
+      "targetNode": "asset_staff_roster",
+      "edgeIds": [
+        "edge_mfa_worker_identity",
+        "edge_social_mfa_approval",
+        "edge_social_password_acquired",
+        "edge_staff_roster_access",
+        "edge_worker_roster_access"
+      ],
+      "summary": {
+        "baselinePaths": 1,
+        "blockedPaths": 0,
+        "remainingPaths": 1,
+        "reducedPaths": 1,
+        "unchangedPaths": 0,
+        "baselineExposure": 16,
+        "residualExposure": 8,
+        "exposureReductionPercent": 50.0,
+        "baselineSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 1,
+          "Critical": 0
+        },
+        "remainingSeverity": {
+          "Low": 0,
+          "Medium": 1,
+          "High": 0,
+          "Critical": 0
+        }
+      },
+      "findings": [
+        {
+          "findingId": "SITAS-F-6be7c8aa65d2e13e",
+          "pathId": "SITAS-AP-84a533bd71aef5b1",
+          "scenarioId": "scenario_06",
+          "title": "MFA social-engineering approval",
+          "sourceNode": "attacker_external",
+          "targetNode": "asset_staff_roster",
+          "orderedPath": [
+            "attacker_external",
+            "credential_social",
+            "factor_mfa",
+            "identity_worker",
+            "app_roster",
+            "asset_staff_roster"
+          ],
+          "orderedEdges": [
+            "edge_social_password_acquired",
+            "edge_social_mfa_approval",
+            "edge_mfa_worker_identity",
+            "edge_worker_roster_access",
+            "edge_staff_roster_access"
+          ],
+          "pathLength": 5,
+          "likelihood": 4,
+          "impact": 4,
+          "riskScore": 16,
+          "severity": "High",
+          "baseline": {
+            "likelihood": 4,
+            "impact": 4,
+            "riskScore": 16,
+            "severity": "High"
+          },
+          "residual": {
+            "likelihood": 2,
+            "impact": 4,
+            "riskScore": 8,
+            "severity": "Medium"
+          },
+          "controlsRelevant": [
+            "mfa"
+          ],
+          "controlsApplied": [
+            "mfa"
+          ],
+          "blocked": false,
+          "blockedAt": [],
+          "outcome": "reduced",
+          "controlEffects": [
+            {
+              "edgeId": "edge_social_mfa_approval",
+              "controlId": "mfa",
+              "ruleId": "mfa_cap_social_approval",
+              "action": "cap",
+              "reason": "Additional authentication reduces this assumed human-mediated route without claiming complete prevention.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": 2
+            }
+          ],
+          "explanation": "The path remains; ordinal risk decreases from 16 to 8. mfa/mfa_cap_social_approval at edge_social_mfa_approval: Additional authentication reduces this assumed human-mediated route without claiming complete prevention.",
+          "recommendation": "Review MFA approval practices and strengthen verification; the model deliberately retains reduced residual risk."
+        }
+      ],
+      "search": {
+        "baseline": {
+          "expansions": 5,
+          "depthPruned": 0
+        },
+        "controlled": {
+          "expansions": 5,
+          "depthPruned": 0
+        }
+      }
+    },
+    {
+      "scenarioId": "scenario_07",
+      "title": "Session reuse across device contexts",
+      "description": "Two explicit active-session alternatives: reuse on another device and misuse on the original device. Device-session separation blocks only the cross-device transition; revocation matches both token routes.",
+      "sourceNode": "attacker_external",
+      "targetNode": "asset_staff_roster",
+      "edgeIds": [
+        "edge_copied_staff_session",
+        "edge_cross_device_reuse",
+        "edge_cross_device_roster",
+        "edge_same_device_reuse",
+        "edge_same_device_roster",
+        "edge_staff_roster_access"
+      ],
+      "summary": {
+        "baselinePaths": 2,
+        "blockedPaths": 2,
+        "remainingPaths": 0,
+        "reducedPaths": 0,
+        "unchangedPaths": 0,
+        "baselineExposure": 28,
+        "residualExposure": 0,
+        "exposureReductionPercent": 100.0,
+        "baselineSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 2,
+          "Critical": 0
+        },
+        "remainingSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 0,
+          "Critical": 0
+        }
+      },
+      "findings": [
+        {
+          "findingId": "SITAS-F-bcc86bfb25b409f2",
+          "pathId": "SITAS-AP-c374ef52c5131950",
+          "scenarioId": "scenario_07",
+          "title": "Session reuse across device contexts",
+          "sourceNode": "attacker_external",
+          "targetNode": "asset_staff_roster",
+          "orderedPath": [
+            "attacker_external",
+            "session_copied",
+            "session_cross_device",
+            "app_roster",
+            "asset_staff_roster"
+          ],
+          "orderedEdges": [
+            "edge_copied_staff_session",
+            "edge_cross_device_reuse",
+            "edge_cross_device_roster",
+            "edge_staff_roster_access"
+          ],
+          "pathLength": 4,
+          "likelihood": 4,
+          "impact": 4,
+          "riskScore": 16,
+          "severity": "High",
+          "baseline": {
+            "likelihood": 4,
+            "impact": 4,
+            "riskScore": 16,
+            "severity": "High"
+          },
+          "residual": null,
+          "controlsRelevant": [
+            "device_session_separation",
+            "session_revocation"
+          ],
+          "controlsApplied": [
+            "device_session_separation",
+            "session_revocation"
+          ],
+          "blocked": true,
+          "blockedAt": [
+            "edge_copied_staff_session",
+            "edge_cross_device_reuse",
+            "edge_cross_device_roster"
+          ],
+          "outcome": "blocked",
+          "controlEffects": [
+            {
+              "edgeId": "edge_copied_staff_session",
+              "controlId": "session_revocation",
+              "ruleId": "revoke_session_token",
+              "action": "block",
+              "reason": "Invalidate the referenced authenticated session so token reuse no longer provides a route.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            },
+            {
+              "edgeId": "edge_cross_device_reuse",
+              "controlId": "device_session_separation",
+              "ruleId": "separate_cross_device_session",
+              "action": "block",
+              "reason": "Reject reuse outside the original device context without claiming to prevent same-device misuse.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            },
+            {
+              "edgeId": "edge_cross_device_roster",
+              "controlId": "session_revocation",
+              "ruleId": "revoke_session_token",
+              "action": "block",
+              "reason": "Invalidate the referenced authenticated session so token reuse no longer provides a route.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            }
+          ],
+          "explanation": "The simulated path is blocked at edge_copied_staff_session, edge_cross_device_reuse, edge_cross_device_roster. session_revocation/revoke_session_token at edge_copied_staff_session: Invalidate the referenced authenticated session so token reuse no longer provides a route. device_session_separation/separate_cross_device_session at edge_cross_device_reuse: Reject reuse outside the original device context without claiming to prevent same-device misuse. session_revocation/revoke_session_token at edge_cross_device_roster: Invalidate the referenced authenticated session so token reuse no longer provides a route.",
+          "recommendation": "Revoke exposed sessions and restrict device context; device separation alone does not prevent original-device reuse."
+        },
+        {
+          "findingId": "SITAS-F-31c67e5a16f5ed63",
+          "pathId": "SITAS-AP-a4c33a0871f101ba",
+          "scenarioId": "scenario_07",
+          "title": "Session reuse across device contexts",
+          "sourceNode": "attacker_external",
+          "targetNode": "asset_staff_roster",
+          "orderedPath": [
+            "attacker_external",
+            "session_copied",
+            "session_same_device",
+            "app_roster",
+            "asset_staff_roster"
+          ],
+          "orderedEdges": [
+            "edge_copied_staff_session",
+            "edge_same_device_reuse",
+            "edge_same_device_roster",
+            "edge_staff_roster_access"
+          ],
+          "pathLength": 4,
+          "likelihood": 3,
+          "impact": 4,
+          "riskScore": 12,
+          "severity": "High",
+          "baseline": {
+            "likelihood": 3,
+            "impact": 4,
+            "riskScore": 12,
+            "severity": "High"
+          },
+          "residual": null,
+          "controlsRelevant": [
+            "session_revocation"
+          ],
+          "controlsApplied": [
+            "session_revocation"
+          ],
+          "blocked": true,
+          "blockedAt": [
+            "edge_copied_staff_session",
+            "edge_same_device_roster"
+          ],
+          "outcome": "blocked",
+          "controlEffects": [
+            {
+              "edgeId": "edge_copied_staff_session",
+              "controlId": "session_revocation",
+              "ruleId": "revoke_session_token",
+              "action": "block",
+              "reason": "Invalidate the referenced authenticated session so token reuse no longer provides a route.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            },
+            {
+              "edgeId": "edge_same_device_roster",
+              "controlId": "session_revocation",
+              "ruleId": "revoke_session_token",
+              "action": "block",
+              "reason": "Invalidate the referenced authenticated session so token reuse no longer provides a route.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            }
+          ],
+          "explanation": "The simulated path is blocked at edge_copied_staff_session, edge_same_device_roster. session_revocation/revoke_session_token at edge_copied_staff_session: Invalidate the referenced authenticated session so token reuse no longer provides a route. session_revocation/revoke_session_token at edge_same_device_roster: Invalidate the referenced authenticated session so token reuse no longer provides a route.",
+          "recommendation": "Revoke exposed sessions and restrict device context; device separation alone does not prevent original-device reuse."
+        }
+      ],
+      "search": {
+        "baseline": {
+          "expansions": 7,
+          "depthPruned": 0
+        },
+        "controlled": {
+          "expansions": 0,
+          "depthPruned": 0
+        }
+      }
+    },
+    {
+      "scenarioId": "scenario_08",
+      "title": "Compromised agency credential with authorised-operator alternative",
+      "description": "Primary route: compromised agency-password reference, a distinct password-authenticated identity context, a shared agency workstation, the scheduling application and limited synthetic agency data. Separate residual precondition: an already attacker-controlled authorised agency operator has completed required authentication and holds only necessary delegated permissions. MFA can remove the primary route while the residual route retains the same designed peak risk; these are design intentions, not observed results.",
+      "sourceNode": "attacker_external",
+      "targetNode": "asset_agency_roster",
+      "edgeIds": [
+        "edge_agency_console_access",
+        "edge_agency_delegated_identity",
+        "edge_agency_operator_compromise",
+        "edge_agency_password_acquired",
+        "edge_agency_password_login",
+        "edge_agency_roster_access",
+        "edge_agency_shared_workstation",
+        "edge_agency_workstation_console"
+      ],
+      "summary": {
+        "baselinePaths": 2,
+        "blockedPaths": 1,
+        "remainingPaths": 1,
+        "reducedPaths": 0,
+        "unchangedPaths": 1,
+        "baselineExposure": 18,
+        "residualExposure": 9,
+        "exposureReductionPercent": 50.0,
+        "baselineSeverity": {
+          "Low": 0,
+          "Medium": 2,
+          "High": 0,
+          "Critical": 0
+        },
+        "remainingSeverity": {
+          "Low": 0,
+          "Medium": 1,
+          "High": 0,
+          "Critical": 0
+        }
+      },
+      "findings": [
+        {
+          "findingId": "SITAS-F-bf91dc0ec2eb1ebf",
+          "pathId": "SITAS-AP-9e3db0b857743370",
+          "scenarioId": "scenario_08",
+          "title": "Compromised agency credential with authorised-operator alternative",
+          "sourceNode": "attacker_external",
+          "targetNode": "asset_agency_roster",
+          "orderedPath": [
+            "attacker_external",
+            "actor_agency",
+            "identity_agency",
+            "app_agency",
+            "asset_agency_roster"
+          ],
+          "orderedEdges": [
+            "edge_agency_operator_compromise",
+            "edge_agency_delegated_identity",
+            "edge_agency_console_access",
+            "edge_agency_roster_access"
+          ],
+          "pathLength": 4,
+          "likelihood": 3,
+          "impact": 3,
+          "riskScore": 9,
+          "severity": "Medium",
+          "baseline": {
+            "likelihood": 3,
+            "impact": 3,
+            "riskScore": 9,
+            "severity": "Medium"
+          },
+          "residual": {
+            "likelihood": 3,
+            "impact": 3,
+            "riskScore": 9,
+            "severity": "Medium"
+          },
+          "controlsRelevant": [],
+          "controlsApplied": [],
+          "blocked": false,
+          "blockedAt": [],
+          "outcome": "unchanged",
+          "controlEffects": [],
+          "explanation": "The path remains with unchanged ordinal risk. No selected rule matches its transitions.",
+          "recommendation": "Use MFA for agency password access and review third-party assurance, delegated permissions and monitoring; retain the explicitly assumed authorised-operator residual route in the explanation."
+        },
+        {
+          "findingId": "SITAS-F-37afd36651bd5dea",
+          "pathId": "SITAS-AP-a117bed5122164dc",
+          "scenarioId": "scenario_08",
+          "title": "Compromised agency credential with authorised-operator alternative",
+          "sourceNode": "attacker_external",
+          "targetNode": "asset_agency_roster",
+          "orderedPath": [
+            "attacker_external",
+            "credential_agency",
+            "identity_agency_password_context",
+            "workstation_agency_shared",
+            "app_agency",
+            "asset_agency_roster"
+          ],
+          "orderedEdges": [
+            "edge_agency_password_acquired",
+            "edge_agency_password_login",
+            "edge_agency_shared_workstation",
+            "edge_agency_workstation_console",
+            "edge_agency_roster_access"
+          ],
+          "pathLength": 5,
+          "likelihood": 3,
+          "impact": 3,
+          "riskScore": 9,
+          "severity": "Medium",
+          "baseline": {
+            "likelihood": 3,
+            "impact": 3,
+            "riskScore": 9,
+            "severity": "Medium"
+          },
+          "residual": null,
+          "controlsRelevant": [
+            "mfa"
+          ],
+          "controlsApplied": [
+            "mfa"
+          ],
+          "blocked": true,
+          "blockedAt": [
+            "edge_agency_password_login"
+          ],
+          "outcome": "blocked",
+          "controlEffects": [
+            {
+              "edgeId": "edge_agency_password_login",
+              "controlId": "mfa",
+              "ruleId": "mfa_block_password_only",
+              "action": "block",
+              "reason": "Require an additional authentication factor for a password-only transition.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            }
+          ],
+          "explanation": "The simulated path is blocked at edge_agency_password_login. mfa/mfa_block_password_only at edge_agency_password_login: Require an additional authentication factor for a password-only transition.",
+          "recommendation": "Use MFA for agency password access and review third-party assurance, delegated permissions and monitoring; retain the explicitly assumed authorised-operator residual route in the explanation."
+        }
+      ],
+      "search": {
+        "baseline": {
+          "expansions": 9,
+          "depthPruned": 0
+        },
+        "controlled": {
+          "expansions": 5,
+          "depthPruned": 0
+        }
+      }
+    },
+    {
+      "scenarioId": "scenario_09",
+      "title": "Incorrect agency privilege assignment",
+      "description": "A valid agency identity receives a clinical role by mistake; RBAC removes this excessive assignment, while privileged reauthentication can reduce the operation likelihood.",
+      "sourceNode": "actor_internal",
+      "targetNode": "asset_medication_records",
+      "edgeIds": [
+        "edge_agency_misassigned_role",
+        "edge_internal_agency_identity",
+        "edge_medication_records_access",
+        "edge_wrong_role_medication"
+      ],
+      "summary": {
+        "baselinePaths": 1,
+        "blockedPaths": 1,
+        "remainingPaths": 0,
+        "reducedPaths": 0,
+        "unchangedPaths": 0,
+        "baselineExposure": 12,
+        "residualExposure": 0,
+        "exposureReductionPercent": 100.0,
+        "baselineSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 1,
+          "Critical": 0
+        },
+        "remainingSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 0,
+          "Critical": 0
+        }
+      },
+      "findings": [
+        {
+          "findingId": "SITAS-F-53651ff9c21e1468",
+          "pathId": "SITAS-AP-e9da832d7acf6359",
+          "scenarioId": "scenario_09",
+          "title": "Incorrect agency privilege assignment",
+          "sourceNode": "actor_internal",
+          "targetNode": "asset_medication_records",
+          "orderedPath": [
+            "actor_internal",
+            "identity_agency",
+            "privilege_misassigned",
+            "app_medication",
+            "asset_medication_records"
+          ],
+          "orderedEdges": [
+            "edge_internal_agency_identity",
+            "edge_agency_misassigned_role",
+            "edge_wrong_role_medication",
+            "edge_medication_records_access"
+          ],
+          "pathLength": 4,
+          "likelihood": 3,
+          "impact": 4,
+          "riskScore": 12,
+          "severity": "High",
+          "baseline": {
+            "likelihood": 3,
+            "impact": 4,
+            "riskScore": 12,
+            "severity": "High"
+          },
+          "residual": null,
+          "controlsRelevant": [
+            "privileged_reauthentication",
+            "rbac"
+          ],
+          "controlsApplied": [
+            "privileged_reauthentication",
+            "rbac"
+          ],
+          "blocked": true,
+          "blockedAt": [
+            "edge_agency_misassigned_role"
+          ],
+          "outcome": "blocked",
+          "controlEffects": [
+            {
+              "edgeId": "edge_agency_misassigned_role",
+              "controlId": "rbac",
+              "ruleId": "rbac_remove_excessive_role",
+              "action": "block",
+              "reason": "Remove excessive or incorrectly assigned privileges from the synthetic identity.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            },
+            {
+              "edgeId": "edge_wrong_role_medication",
+              "controlId": "privileged_reauthentication",
+              "ruleId": "reauthenticate_privileged_operation",
+              "action": "cap",
+              "reason": "A fresh authentication requirement reduces the modelled likelihood of the privileged operation.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": 2
+            }
+          ],
+          "explanation": "The simulated path is blocked at edge_agency_misassigned_role. rbac/rbac_remove_excessive_role at edge_agency_misassigned_role: Remove excessive or incorrectly assigned privileges from the synthetic identity. privileged_reauthentication/reauthenticate_privileged_operation at edge_wrong_role_medication: A fresh authentication requirement reduces the modelled likelihood of the privileged operation.",
+          "recommendation": "Correct the erroneous role assignment and recheck least-privilege access for agency identities."
+        }
+      ],
+      "search": {
+        "baseline": {
+          "expansions": 4,
+          "depthPruned": 0
+        },
+        "controlled": {
+          "expansions": 1,
+          "depthPruned": 0
+        }
+      }
+    },
+    {
+      "scenarioId": "scenario_10",
+      "title": "Multi-stage export with authorised-operator residual route",
+      "description": "Primary route: exposed service-password reference, service identity, service-support workstation, internal support application, excessive privilege, unrestricted export application and synthetic care archive. Separate residual precondition: an already compromised or malicious authorised support actor misuses a required export role. Privileged reauthentication caps the final operation, but the selected controls do not completely remove this legitimate-permission route.",
+      "sourceNode": "attacker_external",
+      "targetNode": "asset_care_archive",
+      "edgeIds": [
+        "edge_export_care_archive",
+        "edge_service_excessive_role",
+        "edge_service_password_acquired",
+        "edge_service_password_login",
+        "edge_service_unrestricted_export",
+        "edge_service_workstation_access",
+        "edge_support_active_identity",
+        "edge_support_approved_export_role",
+        "edge_support_operator_influence",
+        "edge_support_permitted_export",
+        "edge_workstation_internal_support"
+      ],
+      "summary": {
+        "baselinePaths": 2,
+        "blockedPaths": 1,
+        "remainingPaths": 1,
+        "reducedPaths": 1,
+        "unchangedPaths": 0,
+        "baselineExposure": 35,
+        "residualExposure": 10,
+        "exposureReductionPercent": 71.43,
+        "baselineSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 1,
+          "Critical": 1
+        },
+        "remainingSeverity": {
+          "Low": 0,
+          "Medium": 0,
+          "High": 1,
+          "Critical": 0
+        }
+      },
+      "findings": [
+        {
+          "findingId": "SITAS-F-a49c2539eba0502d",
+          "pathId": "SITAS-AP-2dd4c16b8f7b5339",
+          "scenarioId": "scenario_10",
+          "title": "Multi-stage export with authorised-operator residual route",
+          "sourceNode": "attacker_external",
+          "targetNode": "asset_care_archive",
+          "orderedPath": [
+            "attacker_external",
+            "credential_service",
+            "identity_service",
+            "workstation_service",
+            "app_internal_support",
+            "privilege_service_excessive",
+            "app_export",
+            "asset_care_archive"
+          ],
+          "orderedEdges": [
+            "edge_service_password_acquired",
+            "edge_service_password_login",
+            "edge_service_workstation_access",
+            "edge_workstation_internal_support",
+            "edge_service_excessive_role",
+            "edge_service_unrestricted_export",
+            "edge_export_care_archive"
+          ],
+          "pathLength": 7,
+          "likelihood": 4,
+          "impact": 5,
+          "riskScore": 20,
+          "severity": "Critical",
+          "baseline": {
+            "likelihood": 4,
+            "impact": 5,
+            "riskScore": 20,
+            "severity": "Critical"
+          },
+          "residual": null,
+          "controlsRelevant": [
+            "admin_restriction",
+            "mfa",
+            "privileged_reauthentication",
+            "rbac"
+          ],
+          "controlsApplied": [
+            "admin_restriction",
+            "mfa",
+            "privileged_reauthentication",
+            "rbac"
+          ],
+          "blocked": true,
+          "blockedAt": [
+            "edge_service_password_login",
+            "edge_service_excessive_role",
+            "edge_service_unrestricted_export"
+          ],
+          "outcome": "blocked",
+          "controlEffects": [
+            {
+              "edgeId": "edge_export_care_archive",
+              "controlId": "privileged_reauthentication",
+              "ruleId": "reauthenticate_privileged_operation",
+              "action": "cap",
+              "reason": "A fresh authentication requirement reduces the modelled likelihood of the privileged operation.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": 2
+            },
+            {
+              "edgeId": "edge_service_excessive_role",
+              "controlId": "rbac",
+              "ruleId": "rbac_remove_excessive_role",
+              "action": "block",
+              "reason": "Remove excessive or incorrectly assigned privileges from the synthetic identity.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            },
+            {
+              "edgeId": "edge_service_password_login",
+              "controlId": "mfa",
+              "ruleId": "mfa_block_password_only",
+              "action": "block",
+              "reason": "Require an additional authentication factor for a password-only transition.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            },
+            {
+              "edgeId": "edge_service_unrestricted_export",
+              "controlId": "admin_restriction",
+              "ruleId": "restrict_unrestricted_admin",
+              "action": "block",
+              "reason": "Remove unrestricted administrator authority from this synthetic transition.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": null
+            }
+          ],
+          "explanation": "The simulated path is blocked at edge_service_password_login, edge_service_excessive_role, edge_service_unrestricted_export. privileged_reauthentication/reauthenticate_privileged_operation at edge_export_care_archive: A fresh authentication requirement reduces the modelled likelihood of the privileged operation. rbac/rbac_remove_excessive_role at edge_service_excessive_role: Remove excessive or incorrectly assigned privileges from the synthetic identity. mfa/mfa_block_password_only at edge_service_password_login: Require an additional authentication factor for a password-only transition. admin_restriction/restrict_unrestricted_admin at edge_service_unrestricted_export: Remove unrestricted administrator authority from this synthetic transition.",
+          "recommendation": "Combine authentication and entitlement controls with oversight of legitimate exports; retain the authorised-operator residual route in the explanation."
+        },
+        {
+          "findingId": "SITAS-F-f2eb8d7cd23d255f",
+          "pathId": "SITAS-AP-1b4359709efb508a",
+          "scenarioId": "scenario_10",
+          "title": "Multi-stage export with authorised-operator residual route",
+          "sourceNode": "attacker_external",
+          "targetNode": "asset_care_archive",
+          "orderedPath": [
+            "attacker_external",
+            "actor_support",
+            "identity_support",
+            "privilege_support_export",
+            "app_export",
+            "asset_care_archive"
+          ],
+          "orderedEdges": [
+            "edge_support_operator_influence",
+            "edge_support_active_identity",
+            "edge_support_approved_export_role",
+            "edge_support_permitted_export",
+            "edge_export_care_archive"
+          ],
+          "pathLength": 5,
+          "likelihood": 3,
+          "impact": 5,
+          "riskScore": 15,
+          "severity": "High",
+          "baseline": {
+            "likelihood": 3,
+            "impact": 5,
+            "riskScore": 15,
+            "severity": "High"
+          },
+          "residual": {
+            "likelihood": 2,
+            "impact": 5,
+            "riskScore": 10,
+            "severity": "High"
+          },
+          "controlsRelevant": [
+            "privileged_reauthentication"
+          ],
+          "controlsApplied": [
+            "privileged_reauthentication"
+          ],
+          "blocked": false,
+          "blockedAt": [],
+          "outcome": "reduced",
+          "controlEffects": [
+            {
+              "edgeId": "edge_export_care_archive",
+              "controlId": "privileged_reauthentication",
+              "ruleId": "reauthenticate_privileged_operation",
+              "action": "cap",
+              "reason": "A fresh authentication requirement reduces the modelled likelihood of the privileged operation.",
+              "beforeLikelihood": 4,
+              "afterLikelihood": 2
+            }
+          ],
+          "explanation": "The path remains; ordinal risk decreases from 15 to 10. privileged_reauthentication/reauthenticate_privileged_operation at edge_export_care_archive: A fresh authentication requirement reduces the modelled likelihood of the privileged operation.",
+          "recommendation": "Combine authentication and entitlement controls with oversight of legitimate exports; retain the authorised-operator residual route in the explanation."
+        }
+      ],
+      "search": {
+        "baseline": {
+          "expansions": 12,
+          "depthPruned": 0
+        },
+        "controlled": {
+          "expansions": 6,
+          "depthPruned": 0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "scenario_03",
+  "title": "Former worker identity remains enabled",
+  "description": "A stale but still enabled fictional identity retains medication-application access; designed to exercise account disablement.",
+  "source": "attacker_external",
+  "target": "asset_medication_records",
+  "edge_ids": [
+    "edge_former_identity_reuse",
+    "edge_former_medication_access",
+    "edge_medication_records_access"
+  ],
+  "recommendation": "Disable former worker identities promptly and review retained entitlements."
+}

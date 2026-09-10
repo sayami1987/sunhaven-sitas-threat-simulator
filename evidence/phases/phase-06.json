@@ -89,5 +89,31 @@
       }
     }
   ],
-  "commit": null
+  "commit": "da4a4908531d4343e88ff863fedb21642e759d1e",
+  "commitRecordedUtc": "2026-09-10T14:59:48.247274+00:00",
+  "committedFiles": [
+    "A\tdocs/methodology/control-simulation-methodology.md",
+    "A\tdocs/methodology/reference-alignment.md",
+    "M\tdocs/methodology/risk-methodology.md",
+    "A\tevidence/01-planning/additional-reference-review.md",
+    "A\tevidence/08-testing/phase06-control-comparison.junit.xml",
+    "A\tevidence/08-testing/phase06-final.junit.xml",
+    "M\tevidence/Development-Journal.md",
+    "M\tevidence/Phase-Completion-Register.md",
+    "A\tevidence/logs/phase05-github-push.execution.json",
+    "A\tevidence/logs/phase05-github-push.txt",
+    "A\tevidence/logs/phase06-control-comparison-tests.execution.json",
+    "A\tevidence/logs/phase06-control-comparison-tests.txt",
+    "A\tevidence/logs/phase06-control-output.execution.json",
+    "A\tevidence/logs/phase06-control-output.txt",
+    "A\tevidence/logs/phase06-final-tests.execution.json",
+    "A\tevidence/logs/phase06-final-tests.txt",
+    "M\tevidence/phases/phase-05.json",
+    "A\tevidence/phases/phase-06.json",
+    "A\tscripts/inspect_controls.py",
+    "A\tsrc/comparison_engine.py",
+    "A\tsrc/control_engine.py",
+    "A\ttests/test_comparison.py",
+    "A\ttests/test_controls.py"
+  ]
 }

@@ -85,3 +85,17 @@ Notes: An initial root test command ran before test_comparison.py existed: pytes
 Evidence: `evidence/logs/phase06-control-comparison-tests.txt`, `evidence/logs/phase06-final-tests.txt`, `evidence/logs/phase06-control-output.txt`.
 
 Exact file/command details: `phases/phase-06.json`. Commit recorded after creation.
+
+Phase 06 commit: `da4a4908531d4343e88ff863fedb21642e759d1e`. Publication is verified separately in push logs.
+
+## Phase 07 Ten synthetic attack scenarios
+
+UTC: 2026-09-10T15:06:40.584142+00:00
+
+Status: Completed. All ten standalone scenarios executed. Independent literal-path tests passed19. All controls:15 baseline paths,12 blocked,3 remaining;2 reduced and1 unchanged. Ordinal exposure228 to27.
+
+Notes: Residual exposure is deliberate: MFA social approval score8, agency operator score9, and controlled export score10. These are model results, not observed incident probabilities. No new UI screenshots; real output retained.
+
+Evidence: `evidence/logs/phase07-scenario-tests.txt`, `evidence/logs/phase07-all-scenarios.txt`, `evidence/logs/phase07-baseline-scenarios.txt`.
+
+Exact file/command details: `phases/phase-07.json`. Commit recorded after creation.

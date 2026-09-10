@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "scenario_02",
+  "title": "Shared workstation session exposure",
+  "description": "Two explicit alternatives: a stale shared session and a fresh shared session. Timeout matches only the stale route; individual-account enforcement matches both shared-identity routes.",
+  "source": "actor_local",
+  "target": "asset_medication_records",
+  "edge_ids": [
+    "edge_local_shared_workstation",
+    "edge_workstation_stale_session",
+    "edge_stale_shared_identity",
+    "edge_workstation_fresh_session",
+    "edge_fresh_shared_identity",
+    "edge_shared_medication_access",
+    "edge_medication_records_access"
+  ],
+  "recommendation": "Combine idle timeout with individual accounts; freshly active shared sessions remain after timeout alone."
+}

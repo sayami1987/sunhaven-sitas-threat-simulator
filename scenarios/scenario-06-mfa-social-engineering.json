@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "scenario_06",
+  "title": "MFA social-engineering approval",
+  "description": "Assume a fictional user approves an attacker-initiated MFA event. The MFA control caps this human-mediated route to ordinal likelihood 2, while no session-token or password-only route is assumed.",
+  "source": "attacker_external",
+  "target": "asset_staff_roster",
+  "edge_ids": [
+    "edge_social_password_acquired",
+    "edge_social_mfa_approval",
+    "edge_mfa_worker_identity",
+    "edge_worker_roster_access",
+    "edge_staff_roster_access"
+  ],
+  "recommendation": "Review MFA approval practices and strengthen verification; the model deliberately retains reduced residual risk."
+}

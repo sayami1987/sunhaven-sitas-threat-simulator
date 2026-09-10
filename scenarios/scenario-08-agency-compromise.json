@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "scenario_08",
+  "title": "Compromised agency credential with authorised-operator alternative",
+  "description": "Primary route: compromised agency-password reference, a distinct password-authenticated identity context, a shared agency workstation, the scheduling application and limited synthetic agency data. Separate residual precondition: an already attacker-controlled authorised agency operator has completed required authentication and holds only necessary delegated permissions. MFA can remove the primary route while the residual route retains the same designed peak risk; these are design intentions, not observed results.",
+  "source": "attacker_external",
+  "target": "asset_agency_roster",
+  "edge_ids": [
+    "edge_agency_password_acquired",
+    "edge_agency_password_login",
+    "edge_agency_shared_workstation",
+    "edge_agency_workstation_console",
+    "edge_agency_operator_compromise",
+    "edge_agency_delegated_identity",
+    "edge_agency_console_access",
+    "edge_agency_roster_access"
+  ],
+  "recommendation": "Use MFA for agency password access and review third-party assurance, delegated permissions and monitoring; retain the explicitly assumed authorised-operator residual route in the explanation."
+}

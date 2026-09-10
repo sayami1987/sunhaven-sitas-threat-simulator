@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "id": "scenario_10",
+  "title": "Multi-stage export with authorised-operator residual route",
+  "description": "Primary route: exposed service-password reference, service identity, service-support workstation, internal support application, excessive privilege, unrestricted export application and synthetic care archive. Separate residual precondition: an already compromised or malicious authorised support actor misuses a required export role. Privileged reauthentication caps the final operation, but the selected controls do not completely remove this legitimate-permission route.",
+  "source": "attacker_external",
+  "target": "asset_care_archive",
+  "edge_ids": [
+    "edge_service_password_acquired",
+    "edge_service_password_login",
+    "edge_service_workstation_access",
+    "edge_workstation_internal_support",
+    "edge_service_excessive_role",
+    "edge_service_unrestricted_export",
+    "edge_support_operator_influence",
+    "edge_support_active_identity",
+    "edge_support_approved_export_role",
+    "edge_support_permitted_export",
+    "edge_export_care_archive"
+  ],
+  "recommendation": "Combine authentication and entitlement controls with oversight of legitimate exports; retain the authorised-operator residual route in the explanation."
+}

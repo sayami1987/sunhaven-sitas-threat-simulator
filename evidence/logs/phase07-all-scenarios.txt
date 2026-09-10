@@ -1,0 +1,42 @@
+Started UTC: 2026-09-10T15:01:09.226127+00:00
+Command: ["python", "scripts/run_scenarios.py", "--json", "evidence/07-control-simulation/scenario-results.json"]
+Exit code: 0
+
+STDOUT
+Scenario | Baseline | Blocked | Remaining | Reduced | Unchanged
+scenario_01 | 1 | 1 | 0 | 0 | 0
+scenario_02 | 2 | 2 | 0 | 0 | 0
+scenario_03 | 1 | 1 | 0 | 0 | 0
+scenario_04 | 1 | 1 | 0 | 0 | 0
+scenario_05 | 2 | 2 | 0 | 0 | 0
+scenario_06 | 1 | 0 | 1 | 1 | 0
+scenario_07 | 2 | 2 | 0 | 0 | 0
+scenario_08 | 2 | 1 | 1 | 0 | 1
+scenario_09 | 1 | 1 | 0 | 0 | 0
+scenario_10 | 2 | 1 | 1 | 1 | 0
+{
+  "baselinePaths": 15,
+  "blockedPaths": 12,
+  "remainingPaths": 3,
+  "reducedPaths": 2,
+  "unchangedPaths": 1,
+  "baselineExposure": 228,
+  "residualExposure": 27,
+  "exposureReductionPercent": 88.16,
+  "baselineSeverity": {
+    "Low": 0,
+    "Medium": 2,
+    "High": 9,
+    "Critical": 4
+  },
+  "remainingSeverity": {
+    "Low": 0,
+    "Medium": 2,
+    "High": 1,
+    "Critical": 0
+  }
+}
+Saved actual scenario results: evidence\07-control-simulation\scenario-results.json
+Synthetic scenario-path records; shared relationships are not independent real-world incidents.
+
+STDERR

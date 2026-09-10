@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "scenario_05",
+  "title": "Administrator password theft with active-session alternative",
+  "description": "Two alternatives: a stolen administrator-password reference and an already authenticated administrator session. MFA blocks only the password route; session revocation addresses the active-session alternative.",
+  "source": "attacker_external",
+  "target": "asset_identity_store",
+  "edge_ids": [
+    "edge_admin_password_acquired",
+    "edge_admin_password_login",
+    "edge_admin_unrestricted_role",
+    "edge_unrestricted_admin_console",
+    "edge_stolen_admin_session",
+    "edge_admin_session_console",
+    "edge_console_identity_store"
+  ],
+  "recommendation": "Combine MFA, administrator restriction, session revocation and privileged reauthentication; test the authenticated-session alternative explicitly."
+}

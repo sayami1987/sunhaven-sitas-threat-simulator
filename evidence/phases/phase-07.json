@@ -1,0 +1,97 @@
+{
+  "phase": 7,
+  "title": "Ten synthetic attack scenarios",
+  "recordedUtc": "2026-09-10T15:06:40.584142+00:00",
+  "status": "Completed",
+  "result": "All ten standalone scenarios executed. Independent literal-path tests passed19. All controls:15 baseline paths,12 blocked,3 remaining;2 reduced and1 unchanged. Ordinal exposure228 to27.",
+  "notes": "Residual exposure is deliberate: MFA social approval score8, agency operator score9, and controlled export score10. These are model results, not observed incident probabilities. No new UI screenshots; real output retained.",
+  "filesAtRecording": [
+    "M evidence/Development-Journal.md",
+    " M evidence/Phase-Completion-Register.md",
+    " M evidence/phases/phase-06.json",
+    "?? evidence/07-control-simulation/scenario-baseline.json",
+    "?? evidence/07-control-simulation/scenario-results.json",
+    "?? evidence/08-testing/phase07-scenarios.junit.xml",
+    "?? evidence/logs/phase06-github-push.execution.json",
+    "?? evidence/logs/phase06-github-push.txt",
+    "?? evidence/logs/phase07-all-scenarios.execution.json",
+    "?? evidence/logs/phase07-all-scenarios.txt",
+    "?? evidence/logs/phase07-baseline-scenarios.execution.json",
+    "?? evidence/logs/phase07-baseline-scenarios.txt",
+    "?? evidence/logs/phase07-scenario-tests.execution.json",
+    "?? evidence/logs/phase07-scenario-tests.txt",
+    "?? scenarios/scenario-01-stolen-credential.json",
+    "?? scenarios/scenario-02-shared-session.json",
+    "?? scenarios/scenario-03-stale-identity.json",
+    "?? scenarios/scenario-04-excessive-privilege.json",
+    "?? scenarios/scenario-05-admin-compromise.json",
+    "?? scenarios/scenario-06-mfa-social-engineering.json",
+    "?? scenarios/scenario-07-session-reuse.json",
+    "?? scenarios/scenario-08-agency-compromise.json",
+    "?? scenarios/scenario-09-privilege-path.json",
+    "?? scenarios/scenario-10-multistage.json",
+    "?? scripts/run_scenarios.py",
+    "?? tests/test_scenarios.py"
+  ],
+  "evidence": [
+    {
+      "file": "evidence/logs/phase07-scenario-tests.txt",
+      "execution": {
+        "command": [
+          "python",
+          "-m",
+          "pytest",
+          "tests/test_scenarios.py",
+          "-q",
+          "--junitxml=evidence/08-testing/phase07-scenarios.junit.xml"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T15:06:20.916947+00:00",
+        "finishedUtc": "2026-09-10T15:06:22.002037+00:00",
+        "exitCode": 0,
+        "stdout": "...................                                                      [100%]\n- generated xml file: C:\\Users\\Loo\\OneDrive - CQUniversity (1)\\Documents\\ChatGPT\\Capstone project cyberesecurity\\sunhaven-sitas-threat-simulator\\evidence\\08-testing\\phase07-scenarios.junit.xml -\n19 passed in 0.22s\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "evidence/logs/phase07-all-scenarios.txt",
+      "execution": {
+        "command": [
+          "python",
+          "scripts/run_scenarios.py",
+          "--json",
+          "evidence/07-control-simulation/scenario-results.json"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T15:01:09.226127+00:00",
+        "finishedUtc": "2026-09-10T15:01:09.428186+00:00",
+        "exitCode": 0,
+        "stdout": "Scenario | Baseline | Blocked | Remaining | Reduced | Unchanged\nscenario_01 | 1 | 1 | 0 | 0 | 0\nscenario_02 | 2 | 2 | 0 | 0 | 0\nscenario_03 | 1 | 1 | 0 | 0 | 0\nscenario_04 | 1 | 1 | 0 | 0 | 0\nscenario_05 | 2 | 2 | 0 | 0 | 0\nscenario_06 | 1 | 0 | 1 | 1 | 0\nscenario_07 | 2 | 2 | 0 | 0 | 0\nscenario_08 | 2 | 1 | 1 | 0 | 1\nscenario_09 | 1 | 1 | 0 | 0 | 0\nscenario_10 | 2 | 1 | 1 | 1 | 0\n{\n  \"baselinePaths\": 15,\n  \"blockedPaths\": 12,\n  \"remainingPaths\": 3,\n  \"reducedPaths\": 2,\n  \"unchangedPaths\": 1,\n  \"baselineExposure\": 228,\n  \"residualExposure\": 27,\n  \"exposureReductionPercent\": 88.16,\n  \"baselineSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 2,\n    \"High\": 9,\n    \"Critical\": 4\n  },\n  \"remainingSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 2,\n    \"High\": 1,\n    \"Critical\": 0\n  }\n}\nSaved actual scenario results: evidence\\07-control-simulation\\scenario-results.json\nSynthetic scenario-path records; shared relationships are not independent real-world incidents.\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "evidence/logs/phase07-baseline-scenarios.txt",
+      "execution": {
+        "command": [
+          "python",
+          "scripts/run_scenarios.py",
+          "--controls",
+          "none",
+          "--json",
+          "evidence/07-control-simulation/scenario-baseline.json"
+        ],
+        "workingDirectory": ".",
+        "pythonVersion": "3.12.14",
+        "startedUtc": "2026-09-10T15:01:09.560694+00:00",
+        "finishedUtc": "2026-09-10T15:01:09.777330+00:00",
+        "exitCode": 0,
+        "stdout": "Scenario | Baseline | Blocked | Remaining | Reduced | Unchanged\nscenario_01 | 1 | 0 | 1 | 0 | 1\nscenario_02 | 2 | 0 | 2 | 0 | 2\nscenario_03 | 1 | 0 | 1 | 0 | 1\nscenario_04 | 1 | 0 | 1 | 0 | 1\nscenario_05 | 2 | 0 | 2 | 0 | 2\nscenario_06 | 1 | 0 | 1 | 0 | 1\nscenario_07 | 2 | 0 | 2 | 0 | 2\nscenario_08 | 2 | 0 | 2 | 0 | 2\nscenario_09 | 1 | 0 | 1 | 0 | 1\nscenario_10 | 2 | 0 | 2 | 0 | 2\n{\n  \"baselinePaths\": 15,\n  \"blockedPaths\": 0,\n  \"remainingPaths\": 15,\n  \"reducedPaths\": 0,\n  \"unchangedPaths\": 15,\n  \"baselineExposure\": 228,\n  \"residualExposure\": 228,\n  \"exposureReductionPercent\": 0.0,\n  \"baselineSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 2,\n    \"High\": 9,\n    \"Critical\": 4\n  },\n  \"remainingSeverity\": {\n    \"Low\": 0,\n    \"Medium\": 2,\n    \"High\": 9,\n    \"Critical\": 4\n  }\n}\nSaved actual scenario results: evidence\\07-control-simulation\\scenario-baseline.json\nSynthetic scenario-path records; shared relationships are not independent real-world incidents.\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "commit": null
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "scenario_07",
+  "title": "Session reuse across device contexts",
+  "description": "Two explicit active-session alternatives: reuse on another device and misuse on the original device. Device-session separation blocks only the cross-device transition; revocation matches both token routes.",
+  "source": "attacker_external",
+  "target": "asset_staff_roster",
+  "edge_ids": [
+    "edge_copied_staff_session",
+    "edge_cross_device_reuse",
+    "edge_cross_device_roster",
+    "edge_same_device_reuse",
+    "edge_same_device_roster",
+    "edge_staff_roster_access"
+  ],
+  "recommendation": "Revoke exposed sessions and restrict device context; device separation alone does not prevent original-device reuse."
+}
